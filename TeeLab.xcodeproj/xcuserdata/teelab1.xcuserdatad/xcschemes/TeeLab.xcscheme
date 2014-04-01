@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C2EE28F218EABB2700C8355B"
+               BlueprintIdentifier = "C2EE282318EAA42E00C8355B"
                BuildableName = "TeeLab.app"
                BlueprintName = "TeeLab"
                ReferencedContainer = "container:TeeLab.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C2EE291218EABB2700C8355B"
+               BlueprintIdentifier = "C2EE284318EAA42E00C8355B"
                BuildableName = "TeeLabTests.xctest"
                BlueprintName = "TeeLabTests"
                ReferencedContainer = "container:TeeLab.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C2EE28F218EABB2700C8355B"
+            BlueprintIdentifier = "C2EE282318EAA42E00C8355B"
             BuildableName = "TeeLab.app"
             BlueprintName = "TeeLab"
             ReferencedContainer = "container:TeeLab.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C2EE28F218EABB2700C8355B"
+            BlueprintIdentifier = "C2EE282318EAA42E00C8355B"
             BuildableName = "TeeLab.app"
             BlueprintName = "TeeLab"
             ReferencedContainer = "container:TeeLab.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C2EE28F218EABB2700C8355B"
+            BlueprintIdentifier = "C2EE282318EAA42E00C8355B"
             BuildableName = "TeeLab.app"
             BlueprintName = "TeeLab"
             ReferencedContainer = "container:TeeLab.xcodeproj">

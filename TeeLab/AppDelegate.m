@@ -3,11 +3,13 @@
 //  TeeLab
 //
 //  Created by teelab1 on 14-4-1.
-//  Copyright (c) 2014年 ___FULLUSERNAME___. All rights reserved.
+//  Copyright (c) 2014年 TeeLab. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "RootViewController.h"
 
+#import "LoginViewController.h"
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -17,7 +19,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    LoginViewController *controller = [[LoginViewController  alloc] init];
+    
+    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:controller];
+    self.window.rootViewController = navC;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

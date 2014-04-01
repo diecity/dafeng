@@ -3,7 +3,7 @@
 //  TeeLab
 //
 //  Created by teelab1 on 14-4-1.
-//  Copyright (c) 2014年 ___FULLUSERNAME___. All rights reserved.
+//  Copyright (c) 2014年 TeeLab. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -7,162 +7,379 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2EE28F718EABB2700C8355B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE28F618EABB2700C8355B /* Foundation.framework */; };
-		C2EE28F918EABB2700C8355B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE28F818EABB2700C8355B /* CoreGraphics.framework */; };
-		C2EE28FB18EABB2700C8355B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE28FA18EABB2700C8355B /* UIKit.framework */; };
-		C2EE28FD18EABB2700C8355B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE28FC18EABB2700C8355B /* CoreData.framework */; };
-		C2EE290318EABB2700C8355B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2EE290118EABB2700C8355B /* InfoPlist.strings */; };
-		C2EE290518EABB2700C8355B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE290418EABB2700C8355B /* main.m */; };
-		C2EE290918EABB2700C8355B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE290818EABB2700C8355B /* AppDelegate.m */; };
-		C2EE290C18EABB2700C8355B /* TeeLab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2EE290A18EABB2700C8355B /* TeeLab.xcdatamodeld */; };
-		C2EE290E18EABB2700C8355B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2EE290D18EABB2700C8355B /* Images.xcassets */; };
-		C2EE291518EABB2700C8355B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE291418EABB2700C8355B /* XCTest.framework */; };
-		C2EE291618EABB2700C8355B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE28F618EABB2700C8355B /* Foundation.framework */; };
-		C2EE291718EABB2700C8355B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE28FA18EABB2700C8355B /* UIKit.framework */; };
-		C2EE291818EABB2700C8355B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE28FC18EABB2700C8355B /* CoreData.framework */; };
-		C2EE292018EABB2700C8355B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2EE291E18EABB2700C8355B /* InfoPlist.strings */; };
-		C2EE292218EABB2700C8355B /* TeeLabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE292118EABB2700C8355B /* TeeLabTests.m */; };
+		5F077DB318EAA8DF00A9E603 /* ExtendClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F077DAF18EAA8DF00A9E603 /* ExtendClass.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F077DB418EAA8DF00A9E603 /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F077DB118EAA8DF00A9E603 /* UIHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F077F7718EAAB3F00A9E603 /* DataBaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F077F6C18EAAB3F00A9E603 /* DataBaseHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F077F7818EAAB3F00A9E603 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F077F6E18EAAB3F00A9E603 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F077F7918EAAB3F00A9E603 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F077F7018EAAB3F00A9E603 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F077F7A18EAAB3F00A9E603 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F077F7218EAAB3F00A9E603 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F077F7B18EAAB3F00A9E603 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F077F7418EAAB3F00A9E603 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F077F7C18EAAB3F00A9E603 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F077F7618EAAB3F00A9E603 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F91DD7318EAAE9700ECBE14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F91DD7218EAAE9700ECBE14 /* SystemConfiguration.framework */; };
+		5F91DD7518EAAEA500ECBE14 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F91DD7418EAAEA500ECBE14 /* MessageUI.framework */; };
+		5F91DD7718EAAEB000ECBE14 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F91DD7618EAAEB000ECBE14 /* QuartzCore.framework */; };
+		5F91DD7918EAAEDA00ECBE14 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F91DD7818EAAEDA00ECBE14 /* CoreTelephony.framework */; };
+		5F91DD7B18EAAEE900ECBE14 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F91DD7A18EAAEE900ECBE14 /* CoreLocation.framework */; };
+		5F91DD7D18EAAEF800ECBE14 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F91DD7C18EAAEF800ECBE14 /* libsqlite3.dylib */; };
+		5F91DD7F18EAAF0900ECBE14 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F91DD7E18EAAF0900ECBE14 /* libstdc++.dylib */; };
+		5F91DD8118EAAF1400ECBE14 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F91DD8018EAAF1400ECBE14 /* libz.dylib */; };
+		5F91DD8518EAAF5200ECBE14 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91DD8418EAAF5200ECBE14 /* MBProgressHUD.m */; };
+		5F91DD8918EAB34700ECBE14 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91DD8718EAB34700ECBE14 /* RegisterViewController.m */; };
+		5F91DD8A18EAB34700ECBE14 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F91DD8818EAB34700ECBE14 /* RegisterViewController.xib */; };
+		C2EE282818EAA42E00C8355B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE282718EAA42E00C8355B /* Foundation.framework */; };
+		C2EE282A18EAA42E00C8355B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE282918EAA42E00C8355B /* CoreGraphics.framework */; };
+		C2EE282C18EAA42E00C8355B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE282B18EAA42E00C8355B /* UIKit.framework */; };
+		C2EE282E18EAA42E00C8355B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE282D18EAA42E00C8355B /* CoreData.framework */; };
+		C2EE283418EAA42E00C8355B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2EE283218EAA42E00C8355B /* InfoPlist.strings */; };
+		C2EE283618EAA42E00C8355B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE283518EAA42E00C8355B /* main.m */; };
+		C2EE283A18EAA42E00C8355B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE283918EAA42E00C8355B /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C2EE283D18EAA42E00C8355B /* TeeLab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2EE283B18EAA42E00C8355B /* TeeLab.xcdatamodeld */; };
+		C2EE283F18EAA42E00C8355B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2EE283E18EAA42E00C8355B /* Images.xcassets */; };
+		C2EE284618EAA42E00C8355B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE284518EAA42E00C8355B /* XCTest.framework */; };
+		C2EE284718EAA42E00C8355B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE282718EAA42E00C8355B /* Foundation.framework */; };
+		C2EE284818EAA42E00C8355B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE282B18EAA42E00C8355B /* UIKit.framework */; };
+		C2EE284918EAA42E00C8355B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE282D18EAA42E00C8355B /* CoreData.framework */; };
+		C2EE285118EAA42E00C8355B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2EE284F18EAA42E00C8355B /* InfoPlist.strings */; };
+		C2EE285318EAA42E00C8355B /* TeeLabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE285218EAA42E00C8355B /* TeeLabTests.m */; };
+		C2EE286A18EAA4F300C8355B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE285E18EAA4F300C8355B /* RootViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C2EE286B18EAA4F300C8355B /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2EE285F18EAA4F300C8355B /* RootViewController.xib */; };
+		C2EE286C18EAA4F300C8355B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE286618EAA4F300C8355B /* LoginViewController.m */; };
+		C2EE286D18EAA4F300C8355B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2EE286718EAA4F300C8355B /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C2EE291918EABB2700C8355B /* PBXContainerItemProxy */ = {
+		C2EE284A18EAA42E00C8355B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C2EE28EB18EABB2700C8355B /* Project object */;
+			containerPortal = C2EE281C18EAA42E00C8355B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C2EE28F218EABB2700C8355B;
+			remoteGlobalIDString = C2EE282318EAA42E00C8355B;
 			remoteInfo = TeeLab;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C2EE28F318EABB2700C8355B /* TeeLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeeLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2EE28F618EABB2700C8355B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C2EE28F818EABB2700C8355B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C2EE28FA18EABB2700C8355B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C2EE28FC18EABB2700C8355B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		C2EE290018EABB2700C8355B /* TeeLab-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeeLab-Info.plist"; sourceTree = "<group>"; };
-		C2EE290218EABB2700C8355B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C2EE290418EABB2700C8355B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C2EE290618EABB2700C8355B /* TeeLab-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TeeLab-Prefix.pch"; sourceTree = "<group>"; };
-		C2EE290718EABB2700C8355B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C2EE290818EABB2700C8355B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C2EE290B18EABB2700C8355B /* TeeLab.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeeLab.xcdatamodel; sourceTree = "<group>"; };
-		C2EE290D18EABB2700C8355B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C2EE291318EABB2700C8355B /* TeeLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeeLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2EE291418EABB2700C8355B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C2EE291D18EABB2700C8355B /* TeeLabTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeeLabTests-Info.plist"; sourceTree = "<group>"; };
-		C2EE291F18EABB2700C8355B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C2EE292118EABB2700C8355B /* TeeLabTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeeLabTests.m; sourceTree = "<group>"; };
+		5F077DA918EAA80100A9E603 /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		5F077DAE18EAA8DF00A9E603 /* ExtendClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendClass.h; sourceTree = "<group>"; };
+		5F077DAF18EAA8DF00A9E603 /* ExtendClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendClass.m; sourceTree = "<group>"; };
+		5F077DB018EAA8DF00A9E603 /* UIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHelper.h; sourceTree = "<group>"; };
+		5F077DB118EAA8DF00A9E603 /* UIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHelper.m; sourceTree = "<group>"; };
+		5F077F6B18EAAB3F00A9E603 /* DataBaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseHelper.h; sourceTree = "<group>"; };
+		5F077F6C18EAAB3F00A9E603 /* DataBaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseHelper.m; sourceTree = "<group>"; };
+		5F077F6D18EAAB3F00A9E603 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		5F077F6E18EAAB3F00A9E603 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		5F077F6F18EAAB3F00A9E603 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		5F077F7018EAAB3F00A9E603 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		5F077F7118EAAB3F00A9E603 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		5F077F7218EAAB3F00A9E603 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		5F077F7318EAAB3F00A9E603 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		5F077F7418EAAB3F00A9E603 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		5F077F7518EAAB3F00A9E603 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		5F077F7618EAAB3F00A9E603 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		5F91DD7218EAAE9700ECBE14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5F91DD7418EAAEA500ECBE14 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5F91DD7618EAAEB000ECBE14 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5F91DD7818EAAEDA00ECBE14 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		5F91DD7A18EAAEE900ECBE14 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5F91DD7C18EAAEF800ECBE14 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		5F91DD7E18EAAF0900ECBE14 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		5F91DD8018EAAF1400ECBE14 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5F91DD8318EAAF5200ECBE14 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		5F91DD8418EAAF5200ECBE14 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		5F91DD8618EAB34700ECBE14 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		5F91DD8718EAB34700ECBE14 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		5F91DD8818EAB34700ECBE14 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		C2EE282418EAA42E00C8355B /* TeeLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeeLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2EE282718EAA42E00C8355B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C2EE282918EAA42E00C8355B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C2EE282B18EAA42E00C8355B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C2EE282D18EAA42E00C8355B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C2EE283118EAA42E00C8355B /* TeeLab-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeeLab-Info.plist"; sourceTree = "<group>"; };
+		C2EE283318EAA42E00C8355B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C2EE283518EAA42E00C8355B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C2EE283718EAA42E00C8355B /* TeeLab-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TeeLab-Prefix.pch"; sourceTree = "<group>"; };
+		C2EE283818EAA42E00C8355B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C2EE283918EAA42E00C8355B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C2EE283C18EAA42E00C8355B /* TeeLab.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeeLab.xcdatamodel; sourceTree = "<group>"; };
+		C2EE283E18EAA42E00C8355B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C2EE284418EAA42E00C8355B /* TeeLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeeLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2EE284518EAA42E00C8355B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C2EE284E18EAA42E00C8355B /* TeeLabTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeeLabTests-Info.plist"; sourceTree = "<group>"; };
+		C2EE285018EAA42E00C8355B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C2EE285218EAA42E00C8355B /* TeeLabTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeeLabTests.m; sourceTree = "<group>"; };
+		C2EE285D18EAA4F300C8355B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		C2EE285E18EAA4F300C8355B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		C2EE285F18EAA4F300C8355B /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		C2EE286518EAA4F300C8355B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C2EE286618EAA4F300C8355B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C2EE286718EAA4F300C8355B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C2EE28F018EABB2700C8355B /* Frameworks */ = {
+		C2EE282118EAA42E00C8355B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2EE28F918EABB2700C8355B /* CoreGraphics.framework in Frameworks */,
-				C2EE28FD18EABB2700C8355B /* CoreData.framework in Frameworks */,
-				C2EE28FB18EABB2700C8355B /* UIKit.framework in Frameworks */,
-				C2EE28F718EABB2700C8355B /* Foundation.framework in Frameworks */,
+				5F91DD8118EAAF1400ECBE14 /* libz.dylib in Frameworks */,
+				5F91DD7F18EAAF0900ECBE14 /* libstdc++.dylib in Frameworks */,
+				5F91DD7D18EAAEF800ECBE14 /* libsqlite3.dylib in Frameworks */,
+				5F91DD7B18EAAEE900ECBE14 /* CoreLocation.framework in Frameworks */,
+				5F91DD7918EAAEDA00ECBE14 /* CoreTelephony.framework in Frameworks */,
+				C2EE282A18EAA42E00C8355B /* CoreGraphics.framework in Frameworks */,
+				5F91DD7718EAAEB000ECBE14 /* QuartzCore.framework in Frameworks */,
+				5F91DD7518EAAEA500ECBE14 /* MessageUI.framework in Frameworks */,
+				5F91DD7318EAAE9700ECBE14 /* SystemConfiguration.framework in Frameworks */,
+				C2EE282E18EAA42E00C8355B /* CoreData.framework in Frameworks */,
+				C2EE282C18EAA42E00C8355B /* UIKit.framework in Frameworks */,
+				C2EE282818EAA42E00C8355B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2EE291018EABB2700C8355B /* Frameworks */ = {
+		C2EE284118EAA42E00C8355B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2EE291518EABB2700C8355B /* XCTest.framework in Frameworks */,
-				C2EE291818EABB2700C8355B /* CoreData.framework in Frameworks */,
-				C2EE291718EABB2700C8355B /* UIKit.framework in Frameworks */,
-				C2EE291618EABB2700C8355B /* Foundation.framework in Frameworks */,
+				C2EE284618EAA42E00C8355B /* XCTest.framework in Frameworks */,
+				C2EE284918EAA42E00C8355B /* CoreData.framework in Frameworks */,
+				C2EE284818EAA42E00C8355B /* UIKit.framework in Frameworks */,
+				C2EE284718EAA42E00C8355B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C2EE28EA18EABB2700C8355B = {
+		5F077DA818EAA80100A9E603 /* 公共类 */ = {
 			isa = PBXGroup;
 			children = (
-				C2EE28FE18EABB2700C8355B /* TeeLab */,
-				C2EE291B18EABB2700C8355B /* TeeLabTests */,
-				C2EE28F518EABB2700C8355B /* Frameworks */,
-				C2EE28F418EABB2700C8355B /* Products */,
+				5F077DB518EAAB1C00A9E603 /* DatangFoudation */,
+				5F077DAA18EAA8DF00A9E603 /* database */,
+				5F077DAD18EAA8DF00A9E603 /* helpers */,
+				5F077DA918EAA80100A9E603 /* Define.h */,
+			);
+			name = "公共类";
+			path = "TeeLab/公共类";
+			sourceTree = SOURCE_ROOT;
+		};
+		5F077DAA18EAA8DF00A9E603 /* database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
+		5F077DAD18EAA8DF00A9E603 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5F077DAE18EAA8DF00A9E603 /* ExtendClass.h */,
+				5F077DAF18EAA8DF00A9E603 /* ExtendClass.m */,
+				5F077DB018EAA8DF00A9E603 /* UIHelper.h */,
+				5F077DB118EAA8DF00A9E603 /* UIHelper.m */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		5F077DB518EAAB1C00A9E603 /* DatangFoudation */ = {
+			isa = PBXGroup;
+			children = (
+				5F077F6A18EAAB3F00A9E603 /* FMDB */,
+			);
+			path = DatangFoudation;
+			sourceTree = "<group>";
+		};
+		5F077F6A18EAAB3F00A9E603 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				5F91DD8218EAAF5200ECBE14 /* ui */,
+				5F077F6B18EAAB3F00A9E603 /* DataBaseHelper.h */,
+				5F077F6C18EAAB3F00A9E603 /* DataBaseHelper.m */,
+				5F077F6D18EAAB3F00A9E603 /* FMDatabase.h */,
+				5F077F6E18EAAB3F00A9E603 /* FMDatabase.m */,
+				5F077F6F18EAAB3F00A9E603 /* FMDatabaseAdditions.h */,
+				5F077F7018EAAB3F00A9E603 /* FMDatabaseAdditions.m */,
+				5F077F7118EAAB3F00A9E603 /* FMDatabasePool.h */,
+				5F077F7218EAAB3F00A9E603 /* FMDatabasePool.m */,
+				5F077F7318EAAB3F00A9E603 /* FMDatabaseQueue.h */,
+				5F077F7418EAAB3F00A9E603 /* FMDatabaseQueue.m */,
+				5F077F7518EAAB3F00A9E603 /* FMResultSet.h */,
+				5F077F7618EAAB3F00A9E603 /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		5F91DD8218EAAF5200ECBE14 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				5F91DD8318EAAF5200ECBE14 /* MBProgressHUD.h */,
+				5F91DD8418EAAF5200ECBE14 /* MBProgressHUD.m */,
+			);
+			name = ui;
+			path = "TeeLab/公共类/DatangFoudation/libs/ui";
+			sourceTree = SOURCE_ROOT;
+		};
+		C2EE281B18EAA42E00C8355B = {
+			isa = PBXGroup;
+			children = (
+				C2EE282F18EAA42E00C8355B /* TeeLab */,
+				C2EE284C18EAA42E00C8355B /* TeeLabTests */,
+				C2EE282618EAA42E00C8355B /* Frameworks */,
+				C2EE282518EAA42E00C8355B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C2EE28F418EABB2700C8355B /* Products */ = {
+		C2EE282518EAA42E00C8355B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C2EE28F318EABB2700C8355B /* TeeLab.app */,
-				C2EE291318EABB2700C8355B /* TeeLabTests.xctest */,
+				C2EE282418EAA42E00C8355B /* TeeLab.app */,
+				C2EE284418EAA42E00C8355B /* TeeLabTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C2EE28F518EABB2700C8355B /* Frameworks */ = {
+		C2EE282618EAA42E00C8355B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C2EE28F618EABB2700C8355B /* Foundation.framework */,
-				C2EE28F818EABB2700C8355B /* CoreGraphics.framework */,
-				C2EE28FA18EABB2700C8355B /* UIKit.framework */,
-				C2EE28FC18EABB2700C8355B /* CoreData.framework */,
-				C2EE291418EABB2700C8355B /* XCTest.framework */,
+				5F91DD8018EAAF1400ECBE14 /* libz.dylib */,
+				5F91DD7E18EAAF0900ECBE14 /* libstdc++.dylib */,
+				5F91DD7C18EAAEF800ECBE14 /* libsqlite3.dylib */,
+				5F91DD7A18EAAEE900ECBE14 /* CoreLocation.framework */,
+				5F91DD7818EAAEDA00ECBE14 /* CoreTelephony.framework */,
+				5F91DD7618EAAEB000ECBE14 /* QuartzCore.framework */,
+				5F91DD7418EAAEA500ECBE14 /* MessageUI.framework */,
+				5F91DD7218EAAE9700ECBE14 /* SystemConfiguration.framework */,
+				C2EE282718EAA42E00C8355B /* Foundation.framework */,
+				C2EE282918EAA42E00C8355B /* CoreGraphics.framework */,
+				C2EE282B18EAA42E00C8355B /* UIKit.framework */,
+				C2EE282D18EAA42E00C8355B /* CoreData.framework */,
+				C2EE284518EAA42E00C8355B /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C2EE28FE18EABB2700C8355B /* TeeLab */ = {
+		C2EE282F18EAA42E00C8355B /* TeeLab */ = {
 			isa = PBXGroup;
 			children = (
-				C2EE290718EABB2700C8355B /* AppDelegate.h */,
-				C2EE290818EABB2700C8355B /* AppDelegate.m */,
-				C2EE290D18EABB2700C8355B /* Images.xcassets */,
-				C2EE290A18EABB2700C8355B /* TeeLab.xcdatamodeld */,
-				C2EE28FF18EABB2700C8355B /* Supporting Files */,
+				C2EE285C18EAA4F300C8355B /* 主页面 */,
+				C2EE283818EAA42E00C8355B /* AppDelegate.h */,
+				C2EE283918EAA42E00C8355B /* AppDelegate.m */,
+				C2EE283E18EAA42E00C8355B /* Images.xcassets */,
+				C2EE283B18EAA42E00C8355B /* TeeLab.xcdatamodeld */,
+				C2EE283018EAA42E00C8355B /* Supporting Files */,
 			);
 			path = TeeLab;
 			sourceTree = "<group>";
 		};
-		C2EE28FF18EABB2700C8355B /* Supporting Files */ = {
+		C2EE283018EAA42E00C8355B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C2EE290018EABB2700C8355B /* TeeLab-Info.plist */,
-				C2EE290118EABB2700C8355B /* InfoPlist.strings */,
-				C2EE290418EABB2700C8355B /* main.m */,
-				C2EE290618EABB2700C8355B /* TeeLab-Prefix.pch */,
+				C2EE283118EAA42E00C8355B /* TeeLab-Info.plist */,
+				C2EE283218EAA42E00C8355B /* InfoPlist.strings */,
+				C2EE283518EAA42E00C8355B /* main.m */,
+				C2EE283718EAA42E00C8355B /* TeeLab-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C2EE291B18EABB2700C8355B /* TeeLabTests */ = {
+		C2EE284C18EAA42E00C8355B /* TeeLabTests */ = {
 			isa = PBXGroup;
 			children = (
-				C2EE292118EABB2700C8355B /* TeeLabTests.m */,
-				C2EE291C18EABB2700C8355B /* Supporting Files */,
+				C2EE285218EAA42E00C8355B /* TeeLabTests.m */,
+				C2EE284D18EAA42E00C8355B /* Supporting Files */,
 			);
 			path = TeeLabTests;
 			sourceTree = "<group>";
 		};
-		C2EE291C18EABB2700C8355B /* Supporting Files */ = {
+		C2EE284D18EAA42E00C8355B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C2EE291D18EABB2700C8355B /* TeeLabTests-Info.plist */,
-				C2EE291E18EABB2700C8355B /* InfoPlist.strings */,
+				C2EE284E18EAA42E00C8355B /* TeeLabTests-Info.plist */,
+				C2EE284F18EAA42E00C8355B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2EE285C18EAA4F300C8355B /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5F077DA818EAA80100A9E603 /* 公共类 */,
+				C2EE285D18EAA4F300C8355B /* RootViewController.h */,
+				C2EE285E18EAA4F300C8355B /* RootViewController.m */,
+				C2EE285F18EAA4F300C8355B /* RootViewController.xib */,
+				C2EE286018EAA4F300C8355B /* 个人档案 */,
+				C2EE286118EAA4F300C8355B /* 分享 */,
+				C2EE286218EAA4F300C8355B /* 大本营 */,
+				C2EE286318EAA4F300C8355B /* 排行榜 */,
+				C2EE286418EAA4F300C8355B /* 登陆 */,
+				C2EE286818EAA4F300C8355B /* 设置 */,
+				C2EE286918EAA4F300C8355B /* 设计 */,
+			);
+			path = "主页面";
+			sourceTree = "<group>";
+		};
+		C2EE286018EAA4F300C8355B /* 个人档案 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "个人档案";
+			sourceTree = "<group>";
+		};
+		C2EE286118EAA4F300C8355B /* 分享 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "分享";
+			sourceTree = "<group>";
+		};
+		C2EE286218EAA4F300C8355B /* 大本营 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "大本营";
+			sourceTree = "<group>";
+		};
+		C2EE286318EAA4F300C8355B /* 排行榜 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "排行榜";
+			sourceTree = "<group>";
+		};
+		C2EE286418EAA4F300C8355B /* 登陆 */ = {
+			isa = PBXGroup;
+			children = (
+				C2EE286518EAA4F300C8355B /* LoginViewController.h */,
+				C2EE286618EAA4F300C8355B /* LoginViewController.m */,
+				C2EE286718EAA4F300C8355B /* LoginViewController.xib */,
+				5F91DD8618EAB34700ECBE14 /* RegisterViewController.h */,
+				5F91DD8718EAB34700ECBE14 /* RegisterViewController.m */,
+				5F91DD8818EAB34700ECBE14 /* RegisterViewController.xib */,
+			);
+			path = "登陆";
+			sourceTree = "<group>";
+		};
+		C2EE286818EAA4F300C8355B /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
+		C2EE286918EAA4F300C8355B /* 设计 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "设计";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C2EE28F218EABB2700C8355B /* TeeLab */ = {
+		C2EE282318EAA42E00C8355B /* TeeLab */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C2EE292518EABB2700C8355B /* Build configuration list for PBXNativeTarget "TeeLab" */;
+			buildConfigurationList = C2EE285618EAA42E00C8355B /* Build configuration list for PBXNativeTarget "TeeLab" */;
 			buildPhases = (
-				C2EE28EF18EABB2700C8355B /* Sources */,
-				C2EE28F018EABB2700C8355B /* Frameworks */,
-				C2EE28F118EABB2700C8355B /* Resources */,
+				C2EE282018EAA42E00C8355B /* Sources */,
+				C2EE282118EAA42E00C8355B /* Frameworks */,
+				C2EE282218EAA42E00C8355B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -170,121 +387,136 @@
 			);
 			name = TeeLab;
 			productName = TeeLab;
-			productReference = C2EE28F318EABB2700C8355B /* TeeLab.app */;
+			productReference = C2EE282418EAA42E00C8355B /* TeeLab.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C2EE291218EABB2700C8355B /* TeeLabTests */ = {
+		C2EE284318EAA42E00C8355B /* TeeLabTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C2EE292818EABB2700C8355B /* Build configuration list for PBXNativeTarget "TeeLabTests" */;
+			buildConfigurationList = C2EE285918EAA42E00C8355B /* Build configuration list for PBXNativeTarget "TeeLabTests" */;
 			buildPhases = (
-				C2EE290F18EABB2700C8355B /* Sources */,
-				C2EE291018EABB2700C8355B /* Frameworks */,
-				C2EE291118EABB2700C8355B /* Resources */,
+				C2EE284018EAA42E00C8355B /* Sources */,
+				C2EE284118EAA42E00C8355B /* Frameworks */,
+				C2EE284218EAA42E00C8355B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C2EE291A18EABB2700C8355B /* PBXTargetDependency */,
+				C2EE284B18EAA42E00C8355B /* PBXTargetDependency */,
 			);
 			name = TeeLabTests;
 			productName = TeeLabTests;
-			productReference = C2EE291318EABB2700C8355B /* TeeLabTests.xctest */;
+			productReference = C2EE284418EAA42E00C8355B /* TeeLabTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C2EE28EB18EABB2700C8355B /* Project object */ = {
+		C2EE281C18EAA42E00C8355B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "___FULLUSERNAME___";
+				ORGANIZATIONNAME = TeeLab;
 				TargetAttributes = {
-					C2EE291218EABB2700C8355B = {
-						TestTargetID = C2EE28F218EABB2700C8355B;
+					C2EE284318EAA42E00C8355B = {
+						TestTargetID = C2EE282318EAA42E00C8355B;
 					};
 				};
 			};
-			buildConfigurationList = C2EE28EE18EABB2700C8355B /* Build configuration list for PBXProject "TeeLab" */;
+			buildConfigurationList = C2EE281F18EAA42E00C8355B /* Build configuration list for PBXProject "TeeLab" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = C2EE28EA18EABB2700C8355B;
-			productRefGroup = C2EE28F418EABB2700C8355B /* Products */;
+			mainGroup = C2EE281B18EAA42E00C8355B;
+			productRefGroup = C2EE282518EAA42E00C8355B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C2EE28F218EABB2700C8355B /* TeeLab */,
-				C2EE291218EABB2700C8355B /* TeeLabTests */,
+				C2EE282318EAA42E00C8355B /* TeeLab */,
+				C2EE284318EAA42E00C8355B /* TeeLabTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C2EE28F118EABB2700C8355B /* Resources */ = {
+		C2EE282218EAA42E00C8355B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2EE290318EABB2700C8355B /* InfoPlist.strings in Resources */,
-				C2EE290E18EABB2700C8355B /* Images.xcassets in Resources */,
+				C2EE286D18EAA4F300C8355B /* LoginViewController.xib in Resources */,
+				5F91DD8A18EAB34700ECBE14 /* RegisterViewController.xib in Resources */,
+				C2EE283418EAA42E00C8355B /* InfoPlist.strings in Resources */,
+				C2EE283F18EAA42E00C8355B /* Images.xcassets in Resources */,
+				C2EE286B18EAA4F300C8355B /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2EE291118EABB2700C8355B /* Resources */ = {
+		C2EE284218EAA42E00C8355B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2EE292018EABB2700C8355B /* InfoPlist.strings in Resources */,
+				C2EE285118EAA42E00C8355B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C2EE28EF18EABB2700C8355B /* Sources */ = {
+		C2EE282018EAA42E00C8355B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2EE290918EABB2700C8355B /* AppDelegate.m in Sources */,
-				C2EE290518EABB2700C8355B /* main.m in Sources */,
-				C2EE290C18EABB2700C8355B /* TeeLab.xcdatamodeld in Sources */,
+				5F077DB318EAA8DF00A9E603 /* ExtendClass.m in Sources */,
+				C2EE283A18EAA42E00C8355B /* AppDelegate.m in Sources */,
+				5F077F7C18EAAB3F00A9E603 /* FMResultSet.m in Sources */,
+				C2EE283618EAA42E00C8355B /* main.m in Sources */,
+				5F077DB418EAA8DF00A9E603 /* UIHelper.m in Sources */,
+				5F077F7A18EAAB3F00A9E603 /* FMDatabasePool.m in Sources */,
+				C2EE286A18EAA4F300C8355B /* RootViewController.m in Sources */,
+				5F077F7818EAAB3F00A9E603 /* FMDatabase.m in Sources */,
+				5F077F7918EAAB3F00A9E603 /* FMDatabaseAdditions.m in Sources */,
+				5F077F7718EAAB3F00A9E603 /* DataBaseHelper.m in Sources */,
+				5F91DD8918EAB34700ECBE14 /* RegisterViewController.m in Sources */,
+				C2EE283D18EAA42E00C8355B /* TeeLab.xcdatamodeld in Sources */,
+				5F077F7B18EAAB3F00A9E603 /* FMDatabaseQueue.m in Sources */,
+				C2EE286C18EAA4F300C8355B /* LoginViewController.m in Sources */,
+				5F91DD8518EAAF5200ECBE14 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2EE290F18EABB2700C8355B /* Sources */ = {
+		C2EE284018EAA42E00C8355B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2EE292218EABB2700C8355B /* TeeLabTests.m in Sources */,
+				C2EE285318EAA42E00C8355B /* TeeLabTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C2EE291A18EABB2700C8355B /* PBXTargetDependency */ = {
+		C2EE284B18EAA42E00C8355B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C2EE28F218EABB2700C8355B /* TeeLab */;
-			targetProxy = C2EE291918EABB2700C8355B /* PBXContainerItemProxy */;
+			target = C2EE282318EAA42E00C8355B /* TeeLab */;
+			targetProxy = C2EE284A18EAA42E00C8355B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C2EE290118EABB2700C8355B /* InfoPlist.strings */ = {
+		C2EE283218EAA42E00C8355B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C2EE290218EABB2700C8355B /* en */,
+				C2EE283318EAA42E00C8355B /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		C2EE291E18EABB2700C8355B /* InfoPlist.strings */ = {
+		C2EE284F18EAA42E00C8355B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C2EE291F18EABB2700C8355B /* en */,
+				C2EE285018EAA42E00C8355B /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -292,7 +524,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C2EE292318EABB2700C8355B /* Debug */ = {
+		C2EE285418EAA42E00C8355B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -327,10 +559,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		C2EE292418EABB2700C8355B /* Release */ = {
+		C2EE285518EAA42E00C8355B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -358,11 +591,12 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		C2EE292618EABB2700C8355B /* Debug */ = {
+		C2EE285718EAA42E00C8355B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -375,7 +609,7 @@
 			};
 			name = Debug;
 		};
-		C2EE292718EABB2700C8355B /* Release */ = {
+		C2EE285818EAA42E00C8355B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -388,7 +622,7 @@
 			};
 			name = Release;
 		};
-		C2EE292918EABB2700C8355B /* Debug */ = {
+		C2EE285A18EAA42E00C8355B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TeeLab.app/TeeLab";
@@ -410,7 +644,7 @@
 			};
 			name = Debug;
 		};
-		C2EE292A18EABB2700C8355B /* Release */ = {
+		C2EE285B18EAA42E00C8355B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TeeLab.app/TeeLab";
@@ -431,45 +665,47 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C2EE28EE18EABB2700C8355B /* Build configuration list for PBXProject "TeeLab" */ = {
+		C2EE281F18EAA42E00C8355B /* Build configuration list for PBXProject "TeeLab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C2EE292318EABB2700C8355B /* Debug */,
-				C2EE292418EABB2700C8355B /* Release */,
+				C2EE285418EAA42E00C8355B /* Debug */,
+				C2EE285518EAA42E00C8355B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C2EE292518EABB2700C8355B /* Build configuration list for PBXNativeTarget "TeeLab" */ = {
+		C2EE285618EAA42E00C8355B /* Build configuration list for PBXNativeTarget "TeeLab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C2EE292618EABB2700C8355B /* Debug */,
-				C2EE292718EABB2700C8355B /* Release */,
+				C2EE285718EAA42E00C8355B /* Debug */,
+				C2EE285818EAA42E00C8355B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		C2EE292818EABB2700C8355B /* Build configuration list for PBXNativeTarget "TeeLabTests" */ = {
+		C2EE285918EAA42E00C8355B /* Build configuration list for PBXNativeTarget "TeeLabTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C2EE292918EABB2700C8355B /* Debug */,
-				C2EE292A18EABB2700C8355B /* Release */,
+				C2EE285A18EAA42E00C8355B /* Debug */,
+				C2EE285B18EAA42E00C8355B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		C2EE290A18EABB2700C8355B /* TeeLab.xcdatamodeld */ = {
+		C2EE283B18EAA42E00C8355B /* TeeLab.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				C2EE290B18EABB2700C8355B /* TeeLab.xcdatamodel */,
+				C2EE283C18EAA42E00C8355B /* TeeLab.xcdatamodel */,
 			);
-			currentVersion = C2EE290B18EABB2700C8355B /* TeeLab.xcdatamodel */;
+			currentVersion = C2EE283C18EAA42E00C8355B /* TeeLab.xcdatamodel */;
 			path = TeeLab.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = C2EE28EB18EABB2700C8355B /* Project object */;
+	rootObject = C2EE281C18EAA42E00C8355B /* Project object */;
 }
