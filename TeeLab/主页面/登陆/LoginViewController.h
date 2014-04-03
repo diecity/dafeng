@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+{
+    UIScrollView  * _ad_scrollView;
 
+}
 @property (weak, nonatomic) IBOutlet UIButton *NoLogin;
 @end

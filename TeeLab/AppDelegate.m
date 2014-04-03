@@ -6,6 +6,21 @@
 //  Copyright (c) 2014年 TeeLab. All rights reserved.
 //
 
+#import "UMSocial.h"
+
+#import "MobClick.h"
+
+#import "UMSocialYixinHandler.h"
+#import "UMSocialFacebookHandler.h"
+#import "UMSocialLaiwangHandler.h"
+#import "UMSocialWechatHandler.h"
+
+#import <TencentOpenAPI/QQApiInterface.h>       //手机QQ SDK
+#import <TencentOpenAPI/TencentOAuth.h>
+
+#import "UMSocialInstagramHandler.h"
+
+
 #import "AppDelegate.h"
 #import "RootViewController.h"
 
@@ -19,6 +34,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    /////设置友盟key   533b82a956240b2add05f9ec
+//    [UMSocialData setAppKey:@"507fcab25270157b37000010"];   ///
+    //设置友盟社会化组件appkey
+    [UMSocialData setAppKey:@"533b82a956240b2add05f9ec"];///申请的appkey
+
+    
+    //    //打开Qzone的SSO开关
+    [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //    //设置手机QQ的AppId，指定你的分享url，若传nil，将使用友盟的网址
+    [UMSocialConfig setQQAppId:@"100424468" url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //打开新浪微博的SSO开关
+    [UMSocialConfig setSupportSinaSSO:YES];
+    
+    //设置微信AppId，url地址传nil，将默认使用友盟的网址
+    [UMSocialWechatHandler setWXAppId:@"wxd9a39c7122aa6516" url:nil];
+    
+    //设置易信Appkey和分享url地址
+    [UMSocialYixinHandler setYixinAppKey:@"yx35664bdff4db42c2b7be1e29390c1a06" url:@"http://www.umeng.com"];
+    
+    //设置来往AppId，appscret，显示来源名称和url地址
+    [UMSocialLaiwangHandler setLaiwangAppId:@"8112117817424282305" appSecret:@"9996ed5039e641658de7b83345fee6c9" appDescription:@"友盟社会化组件" urlStirng:@"http://www.umeng.com"];
     
     LoginViewController *controller = [[LoginViewController  alloc] init];
     
@@ -50,6 +87,8 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [UMSocialSnsService  applicationDidBecomeActive];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -144,7 +183,15 @@
     
     return _persistentStoreCoordinator;
 }
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}
 
+   
 #pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.
