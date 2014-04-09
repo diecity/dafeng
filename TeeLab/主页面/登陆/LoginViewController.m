@@ -25,51 +25,6 @@
     }
     return self;
 }
-
-//初始化广告图片
-- (void)initADimageView
-{
-    [_ad_scrollView setContentSize:CGSizeMake(320, 0)];
-//    _ad_scrollView.delegate = self;
-    for (int i = 0; i < 1; i++)
-    {
-        UIImageView *adImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10 + 320 * i, 10, 300, 180)];
-        NSString *imageName = nil;
-        if (i == 0) {
-            imageName = @"APP广告.jpg";
-            
-        }
-        else
-            //            imageName = [NSString stringWithFormat:@"民安自助ok切图_backgroud%d.png",i + 1];
-            imageName = @"APP广告.jpg";
-        
-        [adImageView setImage:[UIImage imageNamed:imageName]];
-        [_ad_scrollView insertSubview:adImageView atIndex:1];
-        
-        UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame=adImageView.frame;
-        [btn addTarget:self action:@selector(buttonnextOfview:) forControlEvents:UIControlEventTouchUpInside];
-        [_ad_scrollView addSubview:btn];
-    }
-    //1秒换图片
-      [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeImageInTimer:) userInfo:nil repeats:YES];
-    
-}
--(void)buttonnextOfview:(UIButton*)sender{
-    
-    
-}
-#pragma mark -1秒换图片-
-- (void)changeImageInTimer:(NSTimer *)timer
-{
-    
-    static int page_ye=0;
-    //    int page = _ad_pageControl.currentPage;
-    page_ye++;
-    page_ye = page_ye > 2 ? 0:page_ye;
-//    _ad_pageControl.currentPage = page_ye;
-    _ad_scrollView.contentOffset = CGPointMake(0 + 320 * page_ye, 0);
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -78,10 +33,15 @@
     self.title=@"登陆";
 //    [self.view addSubview:[UIHelper headerViewWithImage:[UIImage imageNamed:@"nav_settting.png"] title:@"设置" target:self]];
     
-    _ad_scrollView=[[UIScrollView alloc]init];
-    _ad_scrollView.frame=CGRectMake(0, 0, 320, 200);
-    [self initADimageView];   ///添加广告位
-    [self.view addSubview:_ad_scrollView];
+    
+    //添加手势
+    UISwipeGestureRecognizer *recognizer;
+    
+    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeFrom)];
+    
+    [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [_GestureRecognizer addGestureRecognizer:recognizer];
+ 
     
 }
 
@@ -100,10 +60,13 @@
 }
 - (IBAction)NoLogin:(UIButton *)sender {
     NSLog(@"不登陆直接访问");
-
-
 }
 
+- (void)handleSwipeFrom
+{
+    NSLog(@"不登陆直接访问");
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

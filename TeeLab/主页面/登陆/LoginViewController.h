@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<UIGestureRecognizerDelegate>
 {
     UIScrollView  * _ad_scrollView;
+    UITapGestureRecognizer *tapGesture;
+
 
 }
+@property (weak, nonatomic) IBOutlet UIView *GestureRecognizer;
 @property (weak, nonatomic) IBOutlet UIButton *NoLogin;
 @end

@@ -10,8 +10,10 @@
 #import "UMSocial.h"
 
 
-@interface LogInmainViewController : UIViewController<UMSocialUIDelegate,UITextFieldDelegate,UIGestureRecognizerDelegate>{
-UITapGestureRecognizer *tapGesture;
+@interface LogInmainViewController : UIViewController<UMSocialDataDelegate,UITextFieldDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UMSocialUIDelegate>{
+    UITapGestureRecognizer *tapGesture;
+    UIScrollView  * _ad_scrollView;
+
 }
 @property (weak, nonatomic) IBOutlet UITextField *UseName;
 @property (weak, nonatomic) IBOutlet UITextField *PassWord;

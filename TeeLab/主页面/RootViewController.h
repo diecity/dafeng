@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController
+#import "UMSocialControllerService.h"
+#import "UMSocialShakeService.h"
+@interface RootViewController : UIViewController<   UMSocialUIDelegate,UIActionSheetDelegate,
+UMSocialShakeDelegate>
 
 @end

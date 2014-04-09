@@ -19,7 +19,7 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 
 #import "UMSocialInstagramHandler.h"
-
+//#import "WXApi.h"
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
@@ -48,8 +48,8 @@
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
     
-    //设置微信AppId，url地址传nil，将默认使用友盟的网址
-    [UMSocialWechatHandler setWXAppId:@"wxd9a39c7122aa6516" url:nil];
+    //设置微信AppId，url地址传nil，将默认使用友盟的网址  wx5e5627064aee194c
+    [UMSocialWechatHandler setWXAppId:@"wx5e5627064aee194c" url:nil];
     
     //设置易信Appkey和分享url地址
     [UMSocialYixinHandler setYixinAppKey:@"yx35664bdff4db42c2b7be1e29390c1a06" url:@"http://www.umeng.com"];

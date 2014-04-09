@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UIViewController
+@interface RegisterViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate>{
+    UITapGestureRecognizer *tapGesture;
+}
 @property (weak, nonatomic) IBOutlet UITextField *UseName;
 @property (weak, nonatomic) IBOutlet UITextField *PassWord;
 @property (weak, nonatomic) IBOutlet UITextField *PassWord2;
 @property (weak, nonatomic) IBOutlet UITextField *E_mail;
 @property (weak, nonatomic) IBOutlet UITextField *telphoto;
 @property (weak, nonatomic) IBOutlet UITextField *Adress;
+@property (weak, nonatomic) IBOutlet UIView *LogIn_view;
 
 @end
