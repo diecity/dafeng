@@ -25,7 +25,9 @@
 #define CREATE_PLUGIN_TABLE @"CREATE TABLE plugin (_id INTEGER PRIMARY KEY AUTOINCREMENT,key TEXT,pluginName TEXT,updateTime TEXT,version TEXT, hostUrl TEXT, localZipUrl TEXT, localFolderUrl TEXT, imageName TEXT, startPageName TEXT, type TEXT, status TEXT)"
 //key, pluginName, updateTime, version, hostUrl, localZipUrl, localFolderUrl, imageName, startPageName, type, status
 
-
+///创建数据库之个人配送信息
+#define TABLE_SHIP_INFOR @"shipinformatin"
+#define  CREATE_SHIPINFOR_TABLE @"CREATE TABLE shipinformatin(_id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,tel TEXT,address TEXT,postcode TEXT, deaultorno text,mark TEXT ) "
 
 
 ////数据库天气预报缓存
@@ -85,9 +87,9 @@ static DataBase *myDB = nil;
          {
              [db executeUpdate:CREATE_UPDATE_TEXT_TABLE];
          }
-//         if (![db tableExists:TABLE_WEATHER]) {
-//             [db executeUpdate:CREATE_WEATHER_TABLE];
-//         }
+         if (![db tableExists:TABLE_SHIP_INFOR]) {
+             [db executeUpdate:CREATE_SHIPINFOR_TABLE];
+         }
      }];
 }
 
@@ -96,26 +98,141 @@ static DataBase *myDB = nil;
 
 #pragma mark- 增
 /*******************************************
- 功能：插入一条照片数据
- 参数：照片model
+ 功能：插入一条配送信息数据
+ 参数：地址model
  返回：无
  ********************************************/
-- (void)insertPhoto:(Photo*)photo{
+- (void)insertShipInformation:(ShipInformation*)ship{
+    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback){
+        [db executeUpdate:@"INSERT INTO shipinformatin (name ,tel ,address ,postcode , deaultorno ,mark) VALUES (?,?,?,?,?,?)",
+         ship.userName,
+         ship.phoneNum,
+         ship.postAddr,
+         ship.postcode,
+         ship.deault,
+         ship.mark];
+    
+    }];
+
+}
+/*******************************************************************
+ 功能：选出全部配送信息
+ 参数：无
+ 返回：nsarray（所有符合条件的信息）
+ ******************************************************************/
+- (NSArray*)selectAllShipInformatin{
+    __block NSMutableArray *array = [[NSMutableArray alloc] init];
+    
+    [_queue inDatabase:^(FMDatabase *db)
+     {
+         FMResultSet *rs = nil;
+         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM shipinformatin"];
+         rs = [db executeQuery:SQL];
+         while ([rs next])
+         {
+             ShipInformation *ship = [[ShipInformation alloc] init];
+             ship.userName = [rs stringForColumn:@"name"];
+             ship.postcode = [rs stringForColumn:@"postcode"];
+             ship.postAddr = [rs stringForColumn:@"address"];
+             ship.phoneNum = [rs stringForColumn:@"tel"];
+             ship.mark = [rs stringForColumn:@"mark"];
+             ship.deault = [rs stringForColumn:@"deaultorno"];
+            [array addObject:ship];
+
+             
+         }
+         [rs close];
+     }];
+    return array;
+    
+}
+
+/*******************************************************************
+ 功能：更新配送内容的  姓名 电话 邮编 地址 是否默认
+ 参数：ship（配送内容）， ,mark（唯一标识）
+ 返回：无
+ ******************************************************************/
+- (void)updateContent:(ShipInformation*)ship  byKey:(NSString*)mark{
+    
+    NSLog(@"db---==%@",mark);
+
     [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
      {
-         [db executeUpdate:@"INSERT INTO photo (reportNum,createTime,message,path,type,uploadStatus,mark,fileName,orig) VALUES (?,?,?,?,?,?,?,?,?)",
-          photo.reportNum,
-          photo.createTime,
-          photo.message,
-          photo.path,
-          photo.type,
-          photo.uploadStatus,
-          photo.mark,
-          photo.fileName,
-          photo.orig
+         NSString *SQL = NULL;
+         SQL = [NSString stringWithFormat:@"UPDATE shipinformatin SET name = '%@', tel = '%@',postcode = '%@', address = '%@',deaultorno = '%@' where mark = '%@'",ship.userName, ship.phoneNum,ship.postcode,ship.postAddr,ship.deault, mark];
+         [db executeUpdate:SQL];
+         NSLog(@"db---%@===%@",db,ship.userName);
+     }];
+
+    NSLog(@"db---==%@",mark);
+
+}
+//////都设置位非默认
+-(void)updateContedeualt{
+    
+    NSString *str=@"0";
+    NSString *str1=@"1";
+
+    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
+     {
+         NSString *SQL = NULL;
+         SQL = [NSString stringWithFormat:@"UPDATE shipinformatin SET deaultorno = '%@'  where deaultorno = '%@' ",str,str1];
+         [db executeUpdate:SQL];
+     }];
+
+}
+
+
+#pragma mark- 删除信息数据
+/*******************************************************************
+ 功能：删除符合标签的配送信息
+ 参数：NSString（mark）
+ 返回：无
+ ******************************************************************/
+-(void)deleteshipByPath:(NSString*)mark{
+    
+    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
+     {
+         [db executeUpdate:@"DELETE FROM shipinformatin WHERE mark = ?",
+          mark
           ];
      }];
+    
 }
+//- (NSArray*)selectAllPlugin{
+//    __block NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
+//    [_queue inDatabase:^(FMDatabase *db)
+//     {
+//         FMResultSet *rs = nil;
+//         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM plugin"];
+//         rs = [db executeQuery:SQL];
+//         while ([rs next])
+//         {
+//             PluginInfo *plugin = [[PluginInfo alloc] init];
+//             plugin.key = [rs stringForColumn:@"key"];
+//             
+//         }
+//         [rs close];
+//     }];
+//    return array;
+//}
+
+//- (void)insertPhoto:(Photo*)photo{
+//    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
+//     {
+//         [db executeUpdate:@"INSERT INTO photo (reportNum,createTime,message,path,type,uploadStatus,mark,fileName,orig) VALUES (?,?,?,?,?,?,?,?,?)",
+//          photo.reportNum,
+//          photo.createTime,
+//          photo.message,
+//          photo.path,
+//          photo.type,
+//          photo.uploadStatus,
+//          photo.mark,
+//          photo.fileName,
+//          photo.orig
+//          ];
+//     }];
+//}
 
 /*******************************************
  功能：插入一条文字内容数据
@@ -138,25 +255,25 @@ static DataBase *myDB = nil;
  功能：插入一条插件数据
  参数：PluginInfo（插件信息）
  返回：无
- ********************************************/
-- (void)insertPlugin:(PluginInfo*)plugin{
-    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
-     {
-         [db executeUpdate:@"INSERT INTO plugin (key,pluginName,updateTime, version, hostUrl, localZipUrl, localFolderUrl, imageName, startPageName, type, status) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-          plugin.key,
-          plugin.pluginName,
-          plugin.updateTime,
-          plugin.version,
-          plugin.hostUrl,
-          plugin.localZipUrl,
-          plugin.localFolderUrl,
-          plugin.imageName,
-          plugin.startPageName,
-          plugin.type,
-          plugin.status
-          ];
-     }];
-}
+// ********************************************/
+//- (void)insertPlugin:(PluginInfo*)plugin{
+//    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
+//     {
+//         [db executeUpdate:@"INSERT INTO plugin (key,pluginName,updateTime, version, hostUrl, localZipUrl, localFolderUrl, imageName, startPageName, type, status) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+//          plugin.key,
+//          plugin.pluginName,
+//          plugin.updateTime,
+//          plugin.version,
+//          plugin.hostUrl,
+//          plugin.localZipUrl,
+//          plugin.localFolderUrl,
+//          plugin.imageName,
+//          plugin.startPageName,
+//          plugin.type,
+//          plugin.status
+//          ];
+//     }];
+//}
 
 /*******************************************
  功能：插入一条天气数据
@@ -184,93 +301,93 @@ static DataBase *myDB = nil;
  参数：nsstring（报案号），nsstring（照片类型），NSString（查勘照片／理赔照片）
  返回：nsarray（照片model的数组）
  ********************************************/
-- (NSArray*)selectPhotoWithReportNum:(NSString*)reportNum type:(NSString*)type andMark:(NSString *)mark{
-    __block NSMutableArray *res = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
-    [_queue inDatabase:^(FMDatabase *db)
-     {
-         FMResultSet *rs = nil;
-         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM photo WHERE reportNum = '%@' and mark = '%@' and type = '%@'",reportNum, mark, type];
-         rs = [db executeQuery:SQL];
-         while ([rs next])
-         {
-             Photo *photo = [[[Photo alloc] init] autorelease];
-             [photo setPath:[rs stringForColumn:@"path"]];
-             [photo setReportNum:[rs stringForColumn:@"reportNum"]];
-             [photo setType:[rs stringForColumn:@"type"]];
-             [photo setMessage:[rs stringForColumn:@"message"]];
-             [photo setCreateTime:[rs stringForColumn:@"createTime"]];
-             [photo setUploadStatus:[rs stringForColumn:@"uploadStatus"]];
-             [photo setMark:[rs stringForColumn:@"mark"]];
-             [photo setFileName:[rs stringForColumn:@"fileName"]];
-             [photo setOrig:[rs stringForColumn:@"orig"]];
-             [res addObject:photo];
-         }
-         [rs close];
-     }];
-    return res;
-}
+//- (NSArray*)selectPhotoWithReportNum:(NSString*)reportNum type:(NSString*)type andMark:(NSString *)mark{
+//    __block NSMutableArray *res = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+//    [_queue inDatabase:^(FMDatabase *db)
+//     {
+//         FMResultSet *rs = nil;
+//         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM photo WHERE reportNum = '%@' and mark = '%@' and type = '%@'",reportNum, mark, type];
+//         rs = [db executeQuery:SQL];
+//         while ([rs next])
+//         {
+//             Photo *photo = [[[Photo alloc] init] autorelease];
+//             [photo setPath:[rs stringForColumn:@"path"]];
+//             [photo setReportNum:[rs stringForColumn:@"reportNum"]];
+//             [photo setType:[rs stringForColumn:@"type"]];
+//             [photo setMessage:[rs stringForColumn:@"message"]];
+//             [photo setCreateTime:[rs stringForColumn:@"createTime"]];
+//             [photo setUploadStatus:[rs stringForColumn:@"uploadStatus"]];
+//             [photo setMark:[rs stringForColumn:@"mark"]];
+//             [photo setFileName:[rs stringForColumn:@"fileName"]];
+//             [photo setOrig:[rs stringForColumn:@"orig"]];
+//             [res addObject:photo];
+//         }
+//         [rs close];
+//     }];
+//    return res;
+//}
 
 /*******************************************************************
  功能：根据报案号、标识从数据库查出照片
  参数：nsstring（报案号），NSString（查勘照片／理赔照片）
  返回：nsarray（照片model的数组）
  ******************************************************************/
-- (NSArray*)selectPhotoWithReportNum:(NSString*)reportNum andMark:(NSString *)mark{
-    __block NSMutableArray *res = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
-    [_queue inDatabase:^(FMDatabase *db)
-     {
-         FMResultSet *rs = nil;
-         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM photo WHERE reportNum = '%@' and mark = '%@'" ,reportNum,mark];
-         rs = [db executeQuery:SQL];
-         while ([rs next])
-         {
-             Photo *photo = [[[Photo alloc] init] autorelease];
-             [photo setPath:[rs stringForColumn:@"path"]];
-             [photo setReportNum:[rs stringForColumn:@"reportNum"]];
-             [photo setType:[rs stringForColumn:@"type"]];
-             [photo setMessage:[rs stringForColumn:@"message"]];
-             [photo setCreateTime:[rs stringForColumn:@"createTime"]];
-             [photo setUploadStatus:[rs stringForColumn:@"uploadStatus"]];
-             [photo setMark:[rs stringForColumn:@"mark"]];
-             [photo setFileName:[rs stringForColumn:@"fileName"]];
-              [photo setOrig:[rs stringForColumn:@"orig"]];
-             [res addObject:photo];
-         }
-         [rs close];
-     }];
-    return res;
-}
+//- (NSArray*)selectPhotoWithReportNum:(NSString*)reportNum andMark:(NSString *)mark{
+//    __block NSMutableArray *res = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+//    [_queue inDatabase:^(FMDatabase *db)
+//     {
+//         FMResultSet *rs = nil;
+//         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM photo WHERE reportNum = '%@' and mark = '%@'" ,reportNum,mark];
+//         rs = [db executeQuery:SQL];
+//         while ([rs next])
+//         {
+//             Photo *photo = [[[Photo alloc] init] autorelease];
+//             [photo setPath:[rs stringForColumn:@"path"]];
+//             [photo setReportNum:[rs stringForColumn:@"reportNum"]];
+//             [photo setType:[rs stringForColumn:@"type"]];
+//             [photo setMessage:[rs stringForColumn:@"message"]];
+//             [photo setCreateTime:[rs stringForColumn:@"createTime"]];
+//             [photo setUploadStatus:[rs stringForColumn:@"uploadStatus"]];
+//             [photo setMark:[rs stringForColumn:@"mark"]];
+//             [photo setFileName:[rs stringForColumn:@"fileName"]];
+//              [photo setOrig:[rs stringForColumn:@"orig"]];
+//             [res addObject:photo];
+//         }
+//         [rs close];
+//     }];
+//    return res;
+//}
 
 /*******************************************************************
  功能：根据标识从数据库查出照片
  参数：NSString（查勘照片／理赔照片））
  返回：nsarray（照片model的数组）
  ******************************************************************/
-- (NSArray*)selectPhotoWithMark:(NSString *)mark{
-    __block NSMutableArray *res = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
-    [_queue inDatabase:^(FMDatabase *db)
-     {
-         FMResultSet *rs = nil;
-         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM photo WHERE mark = '%@'" ,mark];
-         rs = [db executeQuery:SQL];
-         while ([rs next])
-         {
-             Photo *photo = [[[Photo alloc] init] autorelease];
-             [photo setPath:[rs stringForColumn:@"path"]];
-             [photo setReportNum:[rs stringForColumn:@"reportNum"]];
-             [photo setType:[rs stringForColumn:@"type"]];
-             [photo setMessage:[rs stringForColumn:@"message"]];
-             [photo setCreateTime:[rs stringForColumn:@"createTime"]];
-             [photo setUploadStatus:[rs stringForColumn:@"uploadStatus"]];
-             [photo setMark:[rs stringForColumn:@"mark"]];
-             [photo setFileName:[rs stringForColumn:@"fileName"]];
-              [photo setOrig:[rs stringForColumn:@"orig"]];
-             [res addObject:photo];
-         }
-         [rs close];
-     }];
-    return res;
-}
+//- (NSArray*)selectPhotoWithMark:(NSString *)mark{
+//    __block NSMutableArray *res = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+//    [_queue inDatabase:^(FMDatabase *db)
+//     {
+//         FMResultSet *rs = nil;
+//         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM photo WHERE mark = '%@'" ,mark];
+//         rs = [db executeQuery:SQL];
+//         while ([rs next])
+//         {
+//             Photo *photo = [[[Photo alloc] init] autorelease];
+//             [photo setPath:[rs stringForColumn:@"path"]];
+//             [photo setReportNum:[rs stringForColumn:@"reportNum"]];
+//             [photo setType:[rs stringForColumn:@"type"]];
+//             [photo setMessage:[rs stringForColumn:@"message"]];
+//             [photo setCreateTime:[rs stringForColumn:@"createTime"]];
+//             [photo setUploadStatus:[rs stringForColumn:@"uploadStatus"]];
+//             [photo setMark:[rs stringForColumn:@"mark"]];
+//             [photo setFileName:[rs stringForColumn:@"fileName"]];
+//              [photo setOrig:[rs stringForColumn:@"orig"]];
+//             [res addObject:photo];
+//         }
+//         [rs close];
+//     }];
+//    return res;
+//}
 
 
 /*******************************************************************
@@ -278,31 +395,31 @@ static DataBase *myDB = nil;
  参数：nsstring（报案号）
  返回：nsarray（照片model的数组）
  ******************************************************************/
-- (NSArray*)selectPhotoWithReportNum:(NSString*)reportNum mark:(NSString *)mark andUploadStatus:(NSString*)uploadStatus{
-    __block NSMutableArray *res = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
-    [_queue inDatabase:^(FMDatabase *db)
-     {
-         FMResultSet *rs = nil;
-         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM photo WHERE reportNum = '%@' and mark = '%@' and uploadStatus = '%@'" ,reportNum,mark,uploadStatus];
-         rs = [db executeQuery:SQL];
-         while ([rs next])
-         {
-             Photo *photo = [[[Photo alloc] init] autorelease];
-             [photo setPath:[rs stringForColumn:@"path"]];
-             [photo setReportNum:[rs stringForColumn:@"reportNum"]];
-             [photo setType:[rs stringForColumn:@"type"]];
-             [photo setMessage:[rs stringForColumn:@"message"]];
-             [photo setCreateTime:[rs stringForColumn:@"createTime"]];
-             [photo setUploadStatus:[rs stringForColumn:@"uploadStatus"]];
-             [photo setMark:[rs stringForColumn:@"mark"]];
-             [photo setFileName:[rs stringForColumn:@"fileName"]];
-              [photo setOrig:[rs stringForColumn:@"orig"]];
-             [res addObject:photo];
-         }
-         [rs close];
-     }];
-    return res;
-}
+//- (NSArray*)selectPhotoWithReportNum:(NSString*)reportNum mark:(NSString *)mark andUploadStatus:(NSString*)uploadStatus{
+//    __block NSMutableArray *res = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+//    [_queue inDatabase:^(FMDatabase *db)
+//     {
+//         FMResultSet *rs = nil;
+//         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM photo WHERE reportNum = '%@' and mark = '%@' and uploadStatus = '%@'" ,reportNum,mark,uploadStatus];
+//         rs = [db executeQuery:SQL];
+//         while ([rs next])
+//         {
+//             Photo *photo = [[[Photo alloc] init] autorelease];
+//             [photo setPath:[rs stringForColumn:@"path"]];
+//             [photo setReportNum:[rs stringForColumn:@"reportNum"]];
+//             [photo setType:[rs stringForColumn:@"type"]];
+//             [photo setMessage:[rs stringForColumn:@"message"]];
+//             [photo setCreateTime:[rs stringForColumn:@"createTime"]];
+//             [photo setUploadStatus:[rs stringForColumn:@"uploadStatus"]];
+//             [photo setMark:[rs stringForColumn:@"mark"]];
+//             [photo setFileName:[rs stringForColumn:@"fileName"]];
+//              [photo setOrig:[rs stringForColumn:@"orig"]];
+//             [res addObject:photo];
+//         }
+//         [rs close];
+//     }];
+//    return res;
+//}
 
 
 /*******************************************************************
@@ -321,7 +438,7 @@ static DataBase *myDB = nil;
          while ([rs next])
          {
              
-             str = [[[NSString alloc] initWithString:[rs stringForColumn:@"content"]] autorelease];
+             str = [[NSString alloc] initWithString:[rs stringForColumn:@"content"]];
          }
          [rs close];
      }];
@@ -342,7 +459,7 @@ static DataBase *myDB = nil;
          rs = [db executeQuery:SQL];
          while ([rs next])
          {
-             str = [[[NSString alloc] initWithString:[rs stringForColumn:@"updateTime"]] autorelease];
+             str = [[NSString alloc] initWithString:[rs stringForColumn:@"updateTime"]];
          }
          [rs close];
      }];
@@ -355,68 +472,68 @@ static DataBase *myDB = nil;
  参数：nsstring（type值）
  返回：nsarray（所有符合条件的plugin）
  ******************************************************************/
-- (NSArray*)selectPluginByType:(NSString*)type{
-    __block NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
-    [_queue inDatabase:^(FMDatabase *db)
-     {
-         FMResultSet *rs = nil;
-         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM plugin WHERE type = '%@'",type];
-         rs = [db executeQuery:SQL];
-         while ([rs next])
-         {
-             PluginInfo *plugin = [[PluginInfo alloc] init];
-             plugin.key = [rs stringForColumn:@"key"];
-             plugin.pluginName = [rs stringForColumn:@"pluginName"];
-             plugin.updateTime = [rs stringForColumn:@"updateTime"];
-             plugin.version = [rs stringForColumn:@"version"];
-             plugin.hostUrl = [rs stringForColumn:@"hostUrl"];
-             plugin.localZipUrl = [rs stringForColumn:@"localZipUrl"];
-             plugin.localFolderUrl = [rs stringForColumn:@"localFolderUrl"];
-             plugin.imageName = [rs stringForColumn:@"imageName"];
-             plugin.startPageName = [rs stringForColumn:@"startPageName"];
-             plugin._id = [rs stringForColumn:@"_id"];
-             plugin.status = [rs stringForColumn:@"status"];
-             [array addObject:plugin];
-             [plugin release];
-         }
-         [rs close];
-     }];
-    return array;
-}
+//- (NSArray*)selectPluginByType:(NSString*)type{
+//    __block NSMutableArray *array = [[NSMutableArray alloc] init];
+//    [_queue inDatabase:^(FMDatabase *db)
+//     {
+//         FMResultSet *rs = nil;
+//         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM plugin WHERE type = '%@'",type];
+//         rs = [db executeQuery:SQL];
+//         while ([rs next])
+//         {
+//             PluginInfo *plugin = [[PluginInfo alloc] init];
+//             plugin.key = [rs stringForColumn:@"key"];
+//             plugin.pluginName = [rs stringForColumn:@"pluginName"];
+//             plugin.updateTime = [rs stringForColumn:@"updateTime"];
+//             plugin.version = [rs stringForColumn:@"version"];
+//             plugin.hostUrl = [rs stringForColumn:@"hostUrl"];
+//             plugin.localZipUrl = [rs stringForColumn:@"localZipUrl"];
+//             plugin.localFolderUrl = [rs stringForColumn:@"localFolderUrl"];
+//             plugin.imageName = [rs stringForColumn:@"imageName"];
+//             plugin.startPageName = [rs stringForColumn:@"startPageName"];
+//             plugin._id = [rs stringForColumn:@"_id"];
+//             plugin.status = [rs stringForColumn:@"status"];
+//             [array addObject:plugin];
+//             [plugin release];
+//         }
+//         [rs close];
+//     }];
+//    return array;
+//}
 
 /*******************************************************************
  功能：选出全部插件
  参数：无
  返回：nsarray（所有符合条件的plugin）
  ******************************************************************/
-- (NSArray*)selectAllPlugin{
-    __block NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
-    [_queue inDatabase:^(FMDatabase *db)
-     {
-         FMResultSet *rs = nil;
-         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM plugin"];
-         rs = [db executeQuery:SQL];
-         while ([rs next])
-         {
-             PluginInfo *plugin = [[PluginInfo alloc] init];
-             plugin.key = [rs stringForColumn:@"key"];
-             plugin.pluginName = [rs stringForColumn:@"pluginName"];
-             plugin.updateTime = [rs stringForColumn:@"updateTime"];
-             plugin.version = [rs stringForColumn:@"version"];
-             plugin.hostUrl = [rs stringForColumn:@"hostUrl"];
-             plugin.localZipUrl = [rs stringForColumn:@"localZipUrl"];
-             plugin.localFolderUrl = [rs stringForColumn:@"localFolderUrl"];
-             plugin.imageName = [rs stringForColumn:@"imageName"];
-             plugin.startPageName = [rs stringForColumn:@"startPageName"];
-             plugin._id = [rs stringForColumn:@"_id"];
-             plugin.status = [rs stringForColumn:@"status"];
-             [array addObject:plugin];
-             [plugin release];
-         }
-         [rs close];
-     }];
-    return array;
-}
+//- (NSArray*)selectAllPlugin{
+//    __block NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
+//    [_queue inDatabase:^(FMDatabase *db)
+//     {
+//         FMResultSet *rs = nil;
+//         NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM plugin"];
+//         rs = [db executeQuery:SQL];
+//         while ([rs next])
+//         {
+//             PluginInfo *plugin = [[PluginInfo alloc] init];
+//             plugin.key = [rs stringForColumn:@"key"];
+//             plugin.pluginName = [rs stringForColumn:@"pluginName"];
+//             plugin.updateTime = [rs stringForColumn:@"updateTime"];
+//             plugin.version = [rs stringForColumn:@"version"];
+//             plugin.hostUrl = [rs stringForColumn:@"hostUrl"];
+//             plugin.localZipUrl = [rs stringForColumn:@"localZipUrl"];
+//             plugin.localFolderUrl = [rs stringForColumn:@"localFolderUrl"];
+//             plugin.imageName = [rs stringForColumn:@"imageName"];
+//             plugin.startPageName = [rs stringForColumn:@"startPageName"];
+//             plugin._id = [rs stringForColumn:@"_id"];
+//             plugin.status = [rs stringForColumn:@"status"];
+//             [array addObject:plugin];
+//             [plugin release];
+//         }
+//         [rs close];
+//     }];
+//    return array;
+//}
 
 
 #pragma mark- 更新
@@ -425,16 +542,16 @@ static DataBase *myDB = nil;
  功能：更新照片上传状态
  参数：nsstring（照片状态）
  返回：无
- ******************************************************************/
-- (void)updatePhoto:(Photo*)photo withUploadStatus:(NSString*)status{
-    
-    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
-     {
-         NSString *SQL = NULL;         
-         SQL = [NSString stringWithFormat:@"UPDATE photo SET uploadStatus = '%@' where path = '%@'",status, photo.path];
-         [db executeUpdate:SQL];
-     }];
-}
+// ******************************************************************/
+//- (void)updatePhoto:(Photo*)photo withUploadStatus:(NSString*)status{
+//    
+//    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
+//     {
+//         NSString *SQL = NULL;         
+//         SQL = [NSString stringWithFormat:@"UPDATE photo SET uploadStatus = '%@' where path = '%@'",status, photo.path];
+//         [db executeUpdate:SQL];
+//     }];
+//}
 
 
 #pragma mark- 更新文字内容
@@ -460,14 +577,14 @@ static DataBase *myDB = nil;
  参数：pluginInfo
  返回：无
  ******************************************************************/
-- (void)updatePlugin:(PluginInfo*)plugin{
-    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
-     {
-         NSString *SQL = NULL;
-         SQL = [NSString stringWithFormat:@"UPDATE plugin SET key = '%@' and pluginName = '%@' and updateTime = '%@' and version = '%@' and hostUrl = '%@' and localZipUrl = '%@' and localFolderUrl = '%@' and imageName = '%@' and startPageName = '%@' and type = '%@' and status = '%@' where _id = '%@'",plugin.key, plugin.pluginName, plugin.updateTime, plugin.version, plugin.hostUrl, plugin.localZipUrl, plugin.localFolderUrl, plugin.imageName, plugin.startPageName, plugin._id, plugin.type, plugin.status];
-        [db executeUpdate:SQL];
-     }];
-}
+//- (void)updatePlugin:(PluginInfo*)plugin{
+//    [_queue inTransaction:^(FMDatabase *db, BOOL *rollback)
+//     {
+//         NSString *SQL = NULL;
+//         SQL = [NSString stringWithFormat:@"UPDATE plugin SET key = '%@' and pluginName = '%@' and updateTime = '%@' and version = '%@' and hostUrl = '%@' and localZipUrl = '%@' and localFolderUrl = '%@' and imageName = '%@' and startPageName = '%@' and type = '%@' and status = '%@' where _id = '%@'",plugin.key, plugin.pluginName, plugin.updateTime, plugin.version, plugin.hostUrl, plugin.localZipUrl, plugin.localFolderUrl, plugin.imageName, plugin.startPageName, plugin._id, plugin.type, plugin.status];
+//        [db executeUpdate:SQL];
+//     }];
+//}
 
 
 

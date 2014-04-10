@@ -11,6 +11,7 @@
 #import "RegisterViewController.h"
 #import "LogInmainViewController.h"
 
+#import "PersonalnformationViewController.h"
 @interface LoginViewController ()
 
 @end
@@ -33,7 +34,8 @@
     self.title=@"登陆";
 //    [self.view addSubview:[UIHelper headerViewWithImage:[UIImage imageNamed:@"nav_settting.png"] title:@"设置" target:self]];
     
-    
+
+
     //添加手势
     UISwipeGestureRecognizer *recognizer;
     
@@ -55,7 +57,12 @@
 - (IBAction)Register:(UIButton *)sender {
     NSLog(@"注册");
     RegisterViewController *reg=[[RegisterViewController alloc]init];
+//    PersonalnformationViewController *reg=[[PersonalnformationViewController alloc]init];
+
+    
     [self.navigationController pushViewController:reg animated:YES];
+    
+    
 
 }
 - (IBAction)NoLogin:(UIButton *)sender {

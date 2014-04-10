@@ -75,6 +75,9 @@
 #define KEY_PASS_WORD            @"passWord"
 #define KEY_IS_AUTOLOGIN         @"isAutoLogin" 
 
+#define SHIP_INFORMATIN         @"shippinginformation"   ////配送信息
+
+
 #define KEY_WEATHER_CACHE           @"weather_cache"
 #define KEY_OUR_APP_REFRESH_PATH    @"our_app_refresh_path"
 #define KEY_PUSH_MSG_ARRAY          @"key_push_msg_array"

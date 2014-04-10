@@ -13,8 +13,9 @@ UITableViewDataSource,
 UITableViewDelegate
 >
 {
-    UITableView             *_rootTableView;
-    NSMutableArray                 *Arr_Information;
+    UITableView                  *_rootTableView;
+    NSMutableArray               *Arr_Information;
+    UIButton                     *btn_add;   //右按钮
 
 
 }
@@ -27,6 +28,8 @@ UITableViewDelegate
 
 @property (assign, nonatomic)  NSInteger * interger;
 @property (weak, nonatomic)  NSString * AddOrEdit;
+@property (strong, nonatomic)  NSString * update_ship;    /////ship 唯一标示
+
 @property (assign, nonatomic)  int * deault;
 
 @property (weak, nonatomic) IBOutlet UIButton *editing;

@@ -55,7 +55,7 @@
     [UMSocialYixinHandler setYixinAppKey:@"yx35664bdff4db42c2b7be1e29390c1a06" url:@"http://www.umeng.com"];
     
     //设置来往AppId，appscret，显示来源名称和url地址
-    [UMSocialLaiwangHandler setLaiwangAppId:@"8112117817424282305" appSecret:@"9996ed5039e641658de7b83345fee6c9" appDescription:@"友盟社会化组件" urlStirng:@"http://www.umeng.com"];
+    [UMSocialLaiwangHandler setLaiwangAppId:@"8112117817424282305" appSecret:@"9996ed5039e641658de7b83345fee6c9" appDescription:@"teelab" urlStirng:@"http://www.umeng.com"];
     
     LoginViewController *controller = [[LoginViewController  alloc] init];
     

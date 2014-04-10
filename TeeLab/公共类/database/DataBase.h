@@ -18,10 +18,10 @@
 #import "Define.h"
 
 //modle
-#import "Photo.h"
-#import "PluginInfo.h"
-#import "WeatherInfo.h"
-
+//#import "Photo.h"
+//#import "PluginInfo.h"
+//#import "WeatherInfo.h"
+#import "ShipInformation.h"
 
 
 
@@ -33,13 +33,42 @@
 
 +(DataBase*) sharedDataBase;
 
-#pragma mark- insert
+#pragma mark- insert  配送信息 添加 查找 替换 删除
 /*****************************************
- 功能：插入一条照片数据
- 参数：照片model
+ 功能：插入一条配送信息数据
+ 参数：地址model
  返回：无
  ********************************************/
-- (void)insertPhoto:(Photo*)photo;
+- (void)insertShipInformation:(ShipInformation*)ship;
+
+/*******************************************************************
+ 功能：选出全部配送信息
+ 参数：无
+ 返回：nsarray（所有符合条件的plugin）
+ ******************************************************************/
+- (NSArray*)selectAllShipInformatin;
+
+
+/*******************************************************************
+ 功能：更新配送内容的 内容和更新时间
+ 参数：ship（配送内容）， ,mark（唯一标识）
+ 返回：无
+ ******************************************************************/
+- (void)updateContent:(ShipInformation*)ship  byKey:(NSString*)mark;
+
+/////全部设为不默认选中
+- (void)updateContedeualt;
+
+#pragma mark- 删除信息数据
+/*******************************************************************
+ 功能：删除配送信息
+ 参数：NSString（mark）
+ 返回：无
+ ******************************************************************/
+-(void)deleteshipByPath:(NSString*)mark;
+
+
+
 
 /*******************************************
  功能：插入一条文字内容数据
@@ -53,7 +82,7 @@
  参数：PluginInfo（插件信息）
  返回：无
  ********************************************/
-- (void)insertPlugin:(PluginInfo*)plugin;
+//- (void)insertPlugin:(PluginInfo*)plugin;
 
 
 #pragma mark- select
@@ -120,7 +149,7 @@
  参数：nsstring（照片状态）
  返回：无
  ******************************************************************/
-- (void)updatePhoto:(Photo*)photo withUploadStatus:(NSString*)status;
+//- (void)updatePhoto:(Photo*)photo withUploadStatus:(NSString*)status;
 
 /*******************************************************************
  功能：更新文字内容的 内容和更新时间
@@ -135,7 +164,7 @@
  参数：pluginInfo
  返回：无
  ******************************************************************/
-- (void)updatePlugin:(PluginInfo*)plugin;
+//- (void)updatePlugin:(PluginInfo*)plugin;
 
 #pragma mark- 删除
 /*******************************************************************

@@ -2,10 +2,9 @@
 //  CommonViews.m
 //  tp_self_help
 //
-//  Created by cloudpower on 13-7-24.
-//  Copyright (c) 2013年 cloudpower. All rights reserved.
+//  Created by teelab2 on 14-4-8.
+//  Copyright (c) 2014年 TeeLab. All rights reserved.
 //
-
 #import "CustomCells.h"
 
 @implementation CustomCells

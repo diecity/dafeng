@@ -1,14 +1,14 @@
 //
 //  SettingViewController.m
-//  AppCenters
+//  TeeLab
 //
-//  Created by cloudpower on 13-8-10.
-//
+//  Created by teelab2 on 14-4-8.
+//  Copyright (c) 2014年 TeeLab. All rights reserved.
 //
 
 #import "SettingViewController.h"
 //#import "LoginViewController.h"
-
+#import "FeedbackViewController.h"
 #import "ShippingInformationViewController.h"
 #define TAG_ALERT_REFRESH         500
 #define TAG_ALERT_LOG_OUT_SUCC    101
@@ -45,7 +45,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(decideNotificaFinished:) name:@"decideNotificaFinished" object:nil];
 
     self.view.backgroundColor = [UIColor whiteColor];
-    CGRect frame = CGRectMake(0, 0, 320, 320);
+    CGRect frame = CGRectMake(0, 0, 320, 350);
     _rootTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
     [_rootTableView setDelegate:self];
     [_rootTableView setDataSource:self];
@@ -55,7 +55,7 @@
     //[_rootTableView setBackgroundColor:[UIColor colorWithRed:239/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
     [_rootTableView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:_rootTableView];
-    
+   
     
     UIButton *logOutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [logOutBtn setBackgroundImage:[UIImage imageNamed:@"button_4.png"] forState:UIControlStateNormal];
@@ -64,7 +64,7 @@
     [logOutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
     logOutBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [logOutBtn addTarget:self action:@selector(logOut:) forControlEvents:UIControlEventTouchUpInside];
-    [logOutBtn setFrame:CGRectMake(8, 340, 304, 48)]; //380 按钮向上40个像素
+    [logOutBtn setFrame:CGRectMake(8, 380, 304, 48)]; //380 按钮向上40个像素
     [self.view addSubview:logOutBtn];
     
     
@@ -75,7 +75,7 @@
 
 #pragma mark- table view datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4; //5 后续加入插件功能设置用.
+    return 5; //5 后续加入插件功能设置用.
     
 }
 
@@ -136,10 +136,15 @@
         [_refreshB addTarget:self action:@selector(refreshBClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_refreshB setFrame:frame];
         [cell.contentView addSubview:_refreshB];
-
+  
+    }else{
+        label.text = @"反馈";
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
-        
-        
+        UIImageView *arrowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(240, 15, 13, 13)];
+        [arrowImgView setImage:[UIImage imageNamed:@"travel_help_cell_right_btn.png"]];
+        [cell.contentView addSubview:arrowImgView];
+    
     }
     
     return cell;
@@ -150,6 +155,11 @@
         ShippingInformationViewController *shipping=[[ShippingInformationViewController alloc]init];
         [self.navigationController pushViewController:shipping animated:YES];
         return;
+        
+    }else if (indexPath.row==4){
+    
+        FeedbackViewController *feed=[[FeedbackViewController alloc] init];
+        [self.navigationController pushViewController:feed animated:YES];
         
     }
 }
@@ -232,6 +242,7 @@
 
 #pragma mark- 清理缓存
 - (void)cleanBClicked:(UIButton*)btn{
+    
     if ([[NSUserDefaults standardUserDefaults]objectForKey:KEY_PASS_WORD] &&[[[NSUserDefaults standardUserDefaults] objectForKey:KEY_PASS_WORD] length] > 0 ) {
         [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:KEY_ID_NUMBER];
         [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:KEY_PASS_WORD];
@@ -245,6 +256,7 @@
 
 #pragma mark- 是否接受推送
 - (void)pushMsgSwiched:(UISwitch*)swich{
+    
 //    if (swich.isOn) {
 //        [[NetWork shareNetWork]  setAcceptPushMessage:YES ];
 //    }

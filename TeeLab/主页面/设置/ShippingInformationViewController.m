@@ -10,6 +10,10 @@
 #import "Define.h"
 #import "CustomCells.h"
 #import "UIHelper.h"
+#import "DataBase.h"
+#import "ShipInformation.h"
+
+
 @interface ShippingInformationViewController ()
 
 @end
@@ -28,7 +32,7 @@
 {
     [self hideKeyBoard];
 }
-
+////隐藏键盘
 - (void)hideKeyBoard
 {
     [_Name resignFirstResponder];
@@ -40,25 +44,42 @@
 
 }
 -(void)addinformation{
+    static int add=0;
+    
+    if (_root_view.hidden) {
+        add=0;
+    }
+    
+    if (add==0) {
+        [btn_add setTitle:@"取消" forState:UIControlStateNormal];
+        NSLog(@"321");
+        _AddOrEdit=@"add";
+     //////添加新的信息 将输入框设置位可编辑并设置位空
+        _Name.enabled=YES;
+        _tel.enabled=YES;
+        _Address_textview.editable=YES;
+        _Youbian.enabled=YES;
+        _Name.text=@"";
+        _tel.text=@"";
+        _Address_textview.text=@"";
+        _Youbian.text=@"";
+        
+        self.root_view.hidden=NO;
+        self.editing.hidden=YES;
+        
+        [self.view addSubview:_root_view];
+        add=1;
+    }else{
+    
+        [btn_add setTitle:@"添加" forState:UIControlStateNormal];
 
-    NSLog(@"321");
-    _AddOrEdit=@"add";
-    
-    _Name.enabled=YES;
-    _tel.enabled=YES;
-    _Address_textview.editable=YES;
-    _Youbian.enabled=YES;
-    _Name.text=@"";
-    _tel.text=@"";
-    _Address_textview.text=@"";
-    _Youbian.text=@"";
+        self.root_view.hidden=YES;
 
+        add=0;
+    }
     
-    _Address_textview.editable=YES;
-    self.root_view.hidden=NO;
-    self.editing.hidden=YES;
     
-    [self.view addSubview:_root_view];
+  
     
 }
 - (void)viewDidLoad
@@ -66,20 +87,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+//    [[NSUserDefaults standardUserDefaults]setValue:Arr_Information forKey:SHIP_INFORMATIN];
+    Arr_Information=[[NSMutableArray alloc]init];
+    Arr_Information=(NSMutableArray*)[[DataBase sharedDataBase] selectAllShipInformatin];
+
+    NSLog(@"arr===%@",Arr_Information);
     
     self.title=@"配送信息";
     self.interger=0;
     _deault=0;
-    Arr_Information=[[NSMutableArray alloc]init];
+    _update_ship=@"";
     _address.delegate=self;
     _Youbian.delegate=self;
     
     
-    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame=CGRectMake(0, 0, 30, 30);
-    [btn setTitle:@"ADD" forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(addinformation) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *bar=[[UIBarButtonItem alloc]initWithCustomView:btn];
+    btn_add=[UIButton buttonWithType:UIButtonTypeCustom];
+    btn_add.frame=CGRectMake(0, 0, 50, 30);
+    [btn_add setTitle:@"添加" forState:UIControlStateNormal];
+    [btn_add setTintColor:[UIColor grayColor]];
+    [btn_add addTarget:self action:@selector(addinformation) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *bar=[[UIBarButtonItem alloc]initWithCustomView:btn_add];
     self.navigationItem.rightBarButtonItem=bar;
     
     
@@ -91,7 +118,7 @@
     [tapGesture setNumberOfTouchesRequired:1];
     [self.root_view addGestureRecognizer:tapGesture];
     
-    
+    /////设置位圆角
     self.Address_textview.layer.masksToBounds = YES;
     self.Address_textview.layer.cornerRadius = 4.0;
     self.Address_textview.layer.borderWidth = 1.0;
@@ -118,6 +145,9 @@
     [self.view addSubview:_rootTableView];
     
 }
+
+
+#pragma mark 编辑并 保存
 - (IBAction)Editing:(UIButton*)sender {
     
     if (sender.tag==88) {
@@ -130,12 +160,7 @@
         _Address_textview.editable=YES;
 
     }else{
-        _Name.enabled=NO;
-        _tel.enabled=NO;
-        _address.enabled=NO;
-        _Youbian.enabled=NO;
-        _Address_textview.editable=NO;
-        
+      
         if ([_Name.text length]<1) {
             [UIHelper alertWithTitle:@"请输入接收人姓名！"]; return;
 
@@ -151,6 +176,14 @@
         if( ![pred_tel evaluateWithObject:_tel.text] ){
             [UIHelper alertWithTitle:@"接收人人手机号格式不对！"];        return;
         }
+        _Name.enabled=NO;
+        _tel.enabled=NO;
+        _address.enabled=NO;
+        _Youbian.enabled=NO;
+        _Address_textview.editable=NO;
+        self.editing.hidden=NO;
+        [btn_add setTitle:@"添加" forState:UIControlStateNormal];
+
         
         NSMutableDictionary *diction=[[NSMutableDictionary alloc]init];
         [diction setObject:_Name.text forKey:@"name"];
@@ -158,14 +191,47 @@
         [diction setObject:_Address_textview.text forKey:@"address"];
         [diction setObject:_Youbian.text forKey:@"youbian"];
         
-        if ([_AddOrEdit isEqualToString:@"edit"]) {
-            [Arr_Information replaceObjectAtIndex:(NSInteger)_interger withObject:diction];
-        }else{
-        [Arr_Information addObject:diction];
-        }
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        NSString *locationString=[formatter stringFromDate: [NSDate date]];
+        NSLog(@"==%@",locationString);
+        
+        [diction setObject:locationString forKey:@"mark"];
+
+        [diction setObject:@"0" forKey:@"deault"];
+
+        
         
         diction=nil;
         self.root_view.hidden=YES;
+        
+//        [[NSUserDefaults standardUserDefaults]setValue:Arr_Information forKey:SHIP_INFORMATIN];
+
+        
+        ////添加到数据库
+        ShipInformation *ship=[[ShipInformation alloc]init];
+        ship.userName=_Name.text;
+        ship.postcode=_Youbian.text;
+        ship.postAddr=_Address_textview.text;
+        ship.phoneNum=_tel.text;
+        ship.deault=@"0";
+
+        
+        NSString *strdate=_update_ship;
+        if ([_AddOrEdit isEqualToString:@"edit"]) {
+            [Arr_Information replaceObjectAtIndex:(NSInteger)_interger withObject:ship];
+            
+            [[DataBase sharedDataBase] updateContent:ship byKey:strdate];
+
+            
+        }else{
+            
+            ship.mark=locationString;
+            [Arr_Information addObject:ship];
+            [[DataBase sharedDataBase] insertShipInformation:ship];
+
+        }
+        
         [_rootTableView reloadData];
 
     }
@@ -209,22 +275,20 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-//    cell.textLabel.text=@"321";
-//    cell.detailTextLabel.text=@"广东省广州市海珠区小港新街888号小月湾大厦B座2308室";
-//
-    cell.reportNumL.text = @"321";
-    cell.accidentDateL.text =@"广东省广州市海珠区小港新街888号小月湾大厦B座2308室";
-    
+
+   
+    ShipInformation *ship=[[ShipInformation alloc]init];
+    ship=[Arr_Information objectAtIndex:indexPath.row];
     if ([Arr_Information count]>0) {
-        cell.reportNumL.text=[[Arr_Information objectAtIndex:indexPath.row] objectForKey:@"name"];
-        cell.accidentDateL.text=[[Arr_Information objectAtIndex:indexPath.row] objectForKey:@"address"];
+        cell.reportNumL.text=ship.userName;
+        cell.accidentDateL.text=ship.postAddr;
         
     }
   
     cell.Defaultbutton.tag=500+indexPath.row;
     [cell.Defaultbutton setBackgroundColor:[UIColor clearColor]];
 
-    if (cell.Defaultbutton.tag==_deault) {
+    if ([ship.deault isEqualToString:@"1"]) {
         [cell.Defaultbutton setBackgroundColor:[UIColor redColor]];
 
     }
@@ -237,15 +301,20 @@
 -(void)defaultOfseclect:(UIButton *)sender{
  
     NSLog(@"==%d",sender.tag);
-    _deault=sender.tag;
-    [_rootTableView reloadData];
     
-    NSLog(@"==%@",[[Arr_Information objectAtIndex:sender.tag-500] objectForKey:@"name"]);
-    NSLog(@"==%@",[[Arr_Information objectAtIndex:sender.tag-500] objectForKey:@"telphone"]);
-    NSLog(@"==%@",[[Arr_Information objectAtIndex:sender.tag-500] objectForKey:@"address"]);
-    NSLog(@"==%@",[[Arr_Information objectAtIndex:sender.tag-500] objectForKey:@"youbian"]);
+    /////数据库都设置为非默认
+    [[DataBase sharedDataBase] updateContedeualt];
 
+    ShipInformation *ship=[[ShipInformation alloc]init];
+    ship=[Arr_Information objectAtIndex:sender.tag-500];
+    ship.deault=@"1";
     
+    [[DataBase sharedDataBase] updateContent:ship byKey:ship.mark];
+
+    Arr_Information=(NSMutableArray*)[[DataBase sharedDataBase] selectAllShipInformatin];
+
+    [_rootTableView reloadData];
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -254,12 +323,57 @@
 
     _interger=indexPath.row ;
     self.root_view.hidden=NO;
-
     [self.view addSubview:_root_view];
-
-    
     self.editing.hidden=NO;
+    
+    ShipInformation *ship=[Arr_Information objectAtIndex:indexPath.row];
+    //////查看信息详情 暂时不能修改
+    _Name.text=ship.userName;
+    _tel.text=ship.phoneNum;
+    _Address_textview.text=ship.postAddr;
+    _Youbian.text=ship.postcode;
+    
+    
+    _update_ship=ship.mark;
+    
+    NSLog(@"update+ship====%@",_update_ship);
+    _Name.enabled=NO;
+    _tel.enabled=NO;
+    _address.enabled=NO;
+    _Youbian.enabled=NO;
+    _Address_textview.editable=NO;
+    
+    
 
+
+}
+#pragma mark 提交编辑操作时会调用这个方法(删除，)
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"===index==%d",indexPath.row);
+    // 删除操作
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // 1.删除数据
+//        [Arr_Information removeObjectAtIndex:indexPath.row];
+        
+        ShipInformation *ship=[[ShipInformation alloc]init];
+        ship=[Arr_Information objectAtIndex:indexPath.row];
+        [[DataBase sharedDataBase] deleteshipByPath:ship.mark];
+        
+        if ([[DataBase sharedDataBase] selectAllShipInformatin]>0) {
+            Arr_Information=(NSMutableArray*)[[DataBase sharedDataBase] selectAllShipInformatin];
+
+        }
+
+        // 2.更新UITableView UI界面
+         [tableView reloadData];
+    }
+}
+#pragma mark 决定tableview的编辑模式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"indexpath==%d",indexPath.row);
+    return UITableViewCellEditingStyleDelete;
 }
 
 - (void)didReceiveMemoryWarning

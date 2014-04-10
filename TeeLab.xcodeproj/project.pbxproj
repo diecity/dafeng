@@ -25,6 +25,15 @@
 		5F276A4418F3C25700DC0401 /* ShippingInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F276A4218F3C25700DC0401 /* ShippingInformationViewController.xib */; };
 		5F276A4918F3EEB800DC0401 /* CustomCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F276A4718F3EEB800DC0401 /* CustomCells.m */; };
 		5F276A4A18F3EEB800DC0401 /* CustomCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F276A4818F3EEB800DC0401 /* CustomCells.xib */; };
+		5F5433AD18F4ED8500A8164E /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5433AC18F4ED8500A8164E /* DataBase.m */; };
+		5F5433B018F4F31200A8164E /* ShipInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5433AF18F4F31200A8164E /* ShipInformation.m */; };
+		5F5433BF18F5425300A8164E /* CheckButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5433B318F5425300A8164E /* CheckButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F5433C018F5425300A8164E /* TableViewWithBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5433B718F5425300A8164E /* TableViewWithBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F5433C118F5425300A8164E /* UITableView+DataSourceBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5433B918F5425300A8164E /* UITableView+DataSourceBlocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F5433C218F5425300A8164E /* UITableView+DelegateBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5433BB18F5425300A8164E /* UITableView+DelegateBlocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F5433C318F5425300A8164E /* CPComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5433BD18F5425300A8164E /* CPComboBox.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5F5433C718F6209300A8164E /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5433C518F6209300A8164E /* FeedbackViewController.m */; };
+		5F5433C818F6209300A8164E /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F5433C618F6209300A8164E /* FeedbackViewController.xib */; };
 		5F6ACA9218EBABE300E22CDE /* LogInmainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6ACA9018EBABE300E22CDE /* LogInmainViewController.m */; };
 		5F6ACA9318EBABE300E22CDE /* LogInmainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6ACA9118EBABE300E22CDE /* LogInmainViewController.xib */; };
 		5F6ACAE918EBBE5500E22CDE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6ACAE818EBBE5500E22CDE /* Security.framework */; };
@@ -141,6 +150,25 @@
 		5F276A4618F3EEB800DC0401 /* CustomCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCells.h; sourceTree = "<group>"; };
 		5F276A4718F3EEB800DC0401 /* CustomCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCells.m; sourceTree = "<group>"; };
 		5F276A4818F3EEB800DC0401 /* CustomCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCells.xib; sourceTree = "<group>"; };
+		5F5433AB18F4ED8500A8164E /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
+		5F5433AC18F4ED8500A8164E /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
+		5F5433AE18F4F31200A8164E /* ShipInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipInformation.h; path = database/ShipInformation.h; sourceTree = "<group>"; };
+		5F5433AF18F4F31200A8164E /* ShipInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShipInformation.m; path = database/ShipInformation.m; sourceTree = "<group>"; };
+		5F5433B218F5425300A8164E /* CheckButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckButton.h; sourceTree = "<group>"; };
+		5F5433B318F5425300A8164E /* CheckButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckButton.m; sourceTree = "<group>"; };
+		5F5433B518F5425300A8164E /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
+		5F5433B618F5425300A8164E /* TableViewWithBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewWithBlock.h; sourceTree = "<group>"; };
+		5F5433B718F5425300A8164E /* TableViewWithBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewWithBlock.m; sourceTree = "<group>"; };
+		5F5433B818F5425300A8164E /* UITableView+DataSourceBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DataSourceBlocks.h"; sourceTree = "<group>"; };
+		5F5433B918F5425300A8164E /* UITableView+DataSourceBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DataSourceBlocks.m"; sourceTree = "<group>"; };
+		5F5433BA18F5425300A8164E /* UITableView+DelegateBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DelegateBlocks.h"; sourceTree = "<group>"; };
+		5F5433BB18F5425300A8164E /* UITableView+DelegateBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DelegateBlocks.m"; sourceTree = "<group>"; };
+		5F5433BC18F5425300A8164E /* CPComboBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPComboBox.h; sourceTree = "<group>"; };
+		5F5433BD18F5425300A8164E /* CPComboBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPComboBox.m; sourceTree = "<group>"; };
+		5F5433BE18F5425300A8164E /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
+		5F5433C418F6209300A8164E /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		5F5433C518F6209300A8164E /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		5F5433C618F6209300A8164E /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
 		5F6ACA8F18EBABE300E22CDE /* LogInmainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInmainViewController.h; sourceTree = "<group>"; };
 		5F6ACA9018EBABE300E22CDE /* LogInmainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInmainViewController.m; sourceTree = "<group>"; };
 		5F6ACA9118EBABE300E22CDE /* LogInmainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInmainViewController.xib; sourceTree = "<group>"; };
@@ -300,6 +328,7 @@
 		5F077DA818EAA80100A9E603 /* 公共类 */ = {
 			isa = PBXGroup;
 			children = (
+				5F5433B118F5425300A8164E /* button */,
 				5F276A4518F3EEB800DC0401 /* cell */,
 				5F276A3318F3800500DC0401 /* model */,
 				5F077DB518EAAB1C00A9E603 /* DatangFoudation */,
@@ -314,6 +343,8 @@
 		5F077DAA18EAA8DF00A9E603 /* database */ = {
 			isa = PBXGroup;
 			children = (
+				5F5433AB18F4ED8500A8164E /* DataBase.h */,
+				5F5433AC18F4ED8500A8164E /* DataBase.m */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -364,6 +395,8 @@
 				5F276A3518F3805800DC0401 /* CommonVariable.m */,
 				5F276A3618F3805800DC0401 /* UserInfo.h */,
 				5F276A3718F3805800DC0401 /* UserInfo.m */,
+				5F5433AE18F4F31200A8164E /* ShipInformation.h */,
+				5F5433AF18F4F31200A8164E /* ShipInformation.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -376,6 +409,33 @@
 				5F276A4818F3EEB800DC0401 /* CustomCells.xib */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		5F5433B118F5425300A8164E /* button */ = {
+			isa = PBXGroup;
+			children = (
+				5F5433B218F5425300A8164E /* CheckButton.h */,
+				5F5433B318F5425300A8164E /* CheckButton.m */,
+				5F5433B418F5425300A8164E /* ComboBoxBlock */,
+				5F5433BC18F5425300A8164E /* CPComboBox.h */,
+				5F5433BD18F5425300A8164E /* CPComboBox.m */,
+				5F5433BE18F5425300A8164E /* PassValueDelegate.h */,
+			);
+			path = button;
+			sourceTree = "<group>";
+		};
+		5F5433B418F5425300A8164E /* ComboBoxBlock */ = {
+			isa = PBXGroup;
+			children = (
+				5F5433B518F5425300A8164E /* PassValueDelegate.h */,
+				5F5433B618F5425300A8164E /* TableViewWithBlock.h */,
+				5F5433B718F5425300A8164E /* TableViewWithBlock.m */,
+				5F5433B818F5425300A8164E /* UITableView+DataSourceBlocks.h */,
+				5F5433B918F5425300A8164E /* UITableView+DataSourceBlocks.m */,
+				5F5433BA18F5425300A8164E /* UITableView+DelegateBlocks.h */,
+				5F5433BB18F5425300A8164E /* UITableView+DelegateBlocks.m */,
+			);
+			path = ComboBoxBlock;
 			sourceTree = "<group>";
 		};
 		5F759B7118ECE3C10070447F /* UMSocial_Sdk_3.3.6 */ = {
@@ -726,6 +786,9 @@
 				5F276A4018F3C25700DC0401 /* ShippingInformationViewController.h */,
 				5F276A4118F3C25700DC0401 /* ShippingInformationViewController.m */,
 				5F276A4218F3C25700DC0401 /* ShippingInformationViewController.xib */,
+				5F5433C418F6209300A8164E /* FeedbackViewController.h */,
+				5F5433C518F6209300A8164E /* FeedbackViewController.m */,
+				5F5433C618F6209300A8164E /* FeedbackViewController.xib */,
 			);
 			path = "设置";
 			sourceTree = "<group>";
@@ -841,6 +904,7 @@
 				5FEFFCB618EE9E25007FC47D /* photo5.jpg in Resources */,
 				5FEFFCA118EE5162007FC47D /* UMSocialLoginViewController.xib in Resources */,
 				5F276A3B18F3A93800DC0401 /* UMS_qq_icon.png in Resources */,
+				5F5433C818F6209300A8164E /* FeedbackViewController.xib in Resources */,
 				5F759BB818ECE3C10070447F /* UMSLoginViewController.xib in Resources */,
 				5F276A4418F3C25700DC0401 /* ShippingInformationViewController.xib in Resources */,
 				5FEFFCB218EE9E25007FC47D /* photo1.jpg in Resources */,
@@ -865,10 +929,12 @@
 			files = (
 				5F077DB318EAA8DF00A9E603 /* ExtendClass.m in Sources */,
 				5F6ACA9218EBABE300E22CDE /* LogInmainViewController.m in Sources */,
+				5F5433B018F4F31200A8164E /* ShipInformation.m in Sources */,
 				C2EE283A18EAA42E00C8355B /* AppDelegate.m in Sources */,
 				5F077F7C18EAAB3F00A9E603 /* FMResultSet.m in Sources */,
 				C2EE283618EAA42E00C8355B /* main.m in Sources */,
 				5FEFFC9C18EE503D007FC47D /* ShareApplyViewController.m in Sources */,
+				5F5433AD18F4ED8500A8164E /* DataBase.m in Sources */,
 				5F077DB418EAA8DF00A9E603 /* UIHelper.m in Sources */,
 				5F077F7A18EAAB3F00A9E603 /* FMDatabasePool.m in Sources */,
 				5F276A3918F3805800DC0401 /* UserInfo.m in Sources */,
@@ -876,12 +942,18 @@
 				5F077F7818EAAB3F00A9E603 /* FMDatabase.m in Sources */,
 				5FEFFCA018EE5162007FC47D /* UMSocialLoginViewController.m in Sources */,
 				5F276A3818F3805800DC0401 /* CommonVariable.m in Sources */,
+				5F5433C318F5425300A8164E /* CPComboBox.m in Sources */,
+				5F5433C118F5425300A8164E /* UITableView+DataSourceBlocks.m in Sources */,
 				5F077F7918EAAB3F00A9E603 /* FMDatabaseAdditions.m in Sources */,
+				5F5433BF18F5425300A8164E /* CheckButton.m in Sources */,
+				5F5433C018F5425300A8164E /* TableViewWithBlock.m in Sources */,
 				5F276A4918F3EEB800DC0401 /* CustomCells.m in Sources */,
 				5F077F7718EAAB3F00A9E603 /* DataBaseHelper.m in Sources */,
 				5F91DD8918EAB34700ECBE14 /* RegisterViewController.m in Sources */,
+				5F5433C718F6209300A8164E /* FeedbackViewController.m in Sources */,
 				C2EE283D18EAA42E00C8355B /* TeeLab.xcdatamodeld in Sources */,
 				5F6ACAF518EC01AD00E22CDE /* PersonalnformationViewController.m in Sources */,
+				5F5433C218F5425300A8164E /* UITableView+DelegateBlocks.m in Sources */,
 				5F077F7B18EAAB3F00A9E603 /* FMDatabaseQueue.m in Sources */,
 				5F276A4318F3C25700DC0401 /* ShippingInformationViewController.m in Sources */,
 				C2EE286C18EAA4F300C8355B /* LoginViewController.m in Sources */,

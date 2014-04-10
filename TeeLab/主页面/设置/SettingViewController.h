@@ -1,9 +1,9 @@
 //
-//  SettingViewController.h
-//  AppCenters
+//  SettingViewController.m
+//  TeeLab
 //
-//  Created by cloudpower on 13-8-10.
-//
+//  Created by teelab2 on 14-4-8.
+//  Copyright (c) 2014年 TeeLab. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
